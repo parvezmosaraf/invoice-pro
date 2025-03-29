@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { PageTransition } from "@/components/layout/PageTransition";
-import { FileText, CheckCircle, ChevronRight, LogOut } from "lucide-react";
-import { motion } from "framer-motion";
+import { FileText, CheckCircle, ChevronRight, LogOut, Sparkles, Star, Zap, Crown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import UserService from "@/services/UserService";
 import { useEffect, useState } from "react";
 
@@ -27,6 +27,147 @@ const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 }
 };
+
+const bounceAnimations = [
+  {
+    initial: { y: 0, scale: 1 },
+    animate: {
+      y: [-10, 0],
+      scale: [1, 1.1, 1],
+      transition: {
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 0
+      }
+    }
+  },
+  {
+    initial: { y: 0, scale: 1 },
+    animate: {
+      y: [-8, 0],
+      scale: [1, 1.05, 1],
+      transition: {
+        duration: 1.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 0.3
+      }
+    }
+  },
+  {
+    initial: { y: 0, scale: 1 },
+    animate: {
+      y: [-12, 0],
+      scale: [1, 1.15, 1],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 0.6
+      }
+    }
+  },
+  {
+    initial: { y: 0, scale: 1 },
+    animate: {
+      y: [-6, 0],
+      scale: [1, 1.08, 1],
+      transition: {
+        duration: 1.6,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 0.9
+      }
+    }
+  }
+];
+
+const floatAnimations = [
+  {
+    initial: { x: 0, y: 0 },
+    animate: {
+      x: [0, 100, 0, -100, 0],
+      y: [0, -50, 0, 50, 0],
+      scale: [1, 1.1, 1, 1.05, 1],
+      transition: {
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 0
+      }
+    }
+  },
+  {
+    initial: { x: 0, y: 0 },
+    animate: {
+      x: [0, -150, 0, 150, 0],
+      y: [0, 80, 0, -80, 0],
+      scale: [1, 1.15, 1, 1.08, 1],
+      transition: {
+        duration: 10,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 2
+      }
+    }
+  },
+  {
+    initial: { x: 0, y: 0 },
+    animate: {
+      x: [0, 80, 0, -80, 0],
+      y: [0, -100, 0, 100, 0],
+      scale: [1, 1.12, 1, 1.1, 1],
+      transition: {
+        duration: 12,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 4
+      }
+    }
+  },
+  {
+    initial: { x: 0, y: 0 },
+    animate: {
+      x: [0, -120, 0, 120, 0],
+      y: [0, 60, 0, -60, 0],
+      scale: [1, 1.08, 1, 1.12, 1],
+      transition: {
+        duration: 9,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 6
+      }
+    }
+  }
+];
+
+const notificationData = [
+  {
+    text: "Free to use",
+    icon: Sparkles,
+    gradient: "from-primary to-primary/50",
+    position: "absolute"
+  },
+  {
+    text: "No credit card",
+    icon: Star,
+    gradient: "from-purple-500 to-pink-500",
+    position: "absolute"
+  },
+  {
+    text: "Unlimited invoices",
+    icon: Zap,
+    gradient: "from-amber-500 to-orange-500",
+    position: "absolute"
+  },
+  {
+    text: "Premium features",
+    icon: Crown,
+    gradient: "from-emerald-500 to-teal-500",
+    position: "absolute"
+  }
+];
 
 const Index = () => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -94,7 +235,35 @@ const Index = () => {
         
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4">
-          <div className="max-w-7xl mx-auto text-center">
+          <div className="max-w-7xl mx-auto text-center relative">
+            {/* Multiple floating notifications */}
+            {notificationData.map((notification, index) => {
+              const Icon = notification.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial="initial"
+                  animate="animate"
+                  variants={floatAnimations[index]}
+                  className={`${notification.position} z-10`}
+                  style={{
+                    top: `${20 + (index * 15)}%`,
+                    left: `${20 + (index * 15)}%`
+                  }}
+                >
+                  <div className="relative">
+                    <div className={`absolute -inset-1 bg-gradient-to-r ${notification.gradient} rounded-full blur-sm opacity-75 group-hover:opacity-100 transition duration-200`}></div>
+                    <div className="relative flex items-center gap-2 bg-white dark:bg-gray-900 px-4 py-2 rounded-full border shadow-lg">
+                      <Icon className="h-4 w-4 text-yellow-500" />
+                      <span className={`font-semibold text-sm bg-gradient-to-r ${notification.gradient} bg-clip-text text-transparent`}>
+                        {notification.text}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
