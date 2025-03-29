@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with subtle pattern -->
+  <rect width="800" height="600" fill="#FFFFFF"/>
+  <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1" fill="#FDF2F8"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#dots)"/>
+  
+  <!-- Decorative Header Element -->
+  <path d="M40 40 H760" stroke="#F9A8D4" stroke-width="1"/>
+  <path d="M40 43 H760" stroke="#F9A8D4" stroke-width="0.5"/>
+  
+  <!-- Header -->
+  <text x="40" y="100" fill="#831843" font-family="Arial" font-size="48" font-weight="300" letter-spacing="4">INVOICE</text>
+  <text x="40" y="130" fill="#BE185D" font-family="Arial" font-size="16" letter-spacing="2">#INV-2024-0001</text>
+  
+  <!-- Elegant Divider -->
+  <path d="M600 80 L760 80" stroke="#F9A8D4" stroke-width="1"/>
+  <text x="600" y="100" fill="#BE185D" font-family="Arial" font-size="14">Issue Date: Jan 15, 2024</text>
+  <text x="600" y="120" fill="#BE185D" font-family="Arial" font-size="14">Due Date: Feb 15, 2024</text>
+  
+  <!-- From/To Section with Decorative Elements -->
+  <rect x="40" y="180" width="320" height="120" rx="4" fill="#FDF2F8"/>
+  <text x="60" y="210" fill="#831843" font-family="Arial" font-size="12" letter-spacing="2">FROM</text>
+  <text x="60" y="240" fill="#831843" font-family="Arial" font-size="18">Your Company Name</text>
+  <text x="60" y="265" fill="#BE185D" font-family="Arial" font-size="14">123 Business Street</text>
+  
+  <rect x="400" y="180" width="320" height="120" rx="4" fill="#FDF2F8"/>
+  <text x="420" y="210" fill="#831843" font-family="Arial" font-size="12" letter-spacing="2">BILL TO</text>
+  <text x="420" y="240" fill="#831843" font-family="Arial" font-size="18">Client Name</text>
+  <text x="420" y="265" fill="#BE185D" font-family="Arial" font-size="14">456 Client Avenue</text>
+  
+  <!-- Table Header with Rose Gold Accent -->
+  <rect x="40" y="340" width="720" height="40" fill="#FDF2F8"/>
+  <text x="60" y="365" fill="#831843" font-family="Arial" font-size="14">Description</text>
+  <text x="500" y="365" fill="#831843" font-family="Arial" font-size="14" text-anchor="end">Quantity</text>
+  <text x="600" y="365" fill="#831843" font-family="Arial" font-size="14" text-anchor="end">Price</text>
+  <text x="740" y="365" fill="#831843" font-family="Arial" font-size="14" text-anchor="end">Total</text>
+  
+  <!-- Footer with Decorative Elements -->
+  <path d="M40 540 H760" stroke="#F9A8D4" stroke-width="1"/>
+  <path d="M40 543 H760" stroke="#F9A8D4" stroke-width="0.5"/>
+  <text x="400" y="570" fill="#BE185D" font-family="Arial" font-size="14" text-anchor="middle">Thank you for your business</text>
+</svg> 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dynamic Background -->
+  <rect width="800" height="600" fill="#18181B"/>
+  <path d="M0 0 L800 0 L600 600 L0 600 Z" fill="#3F3F46" opacity="0.1"/>
+  <circle cx="700" cy="100" r="300" fill="#71717A" opacity="0.05"/>
+  
+  <!-- Bold Header -->
+  <text x="40" y="100" fill="white" font-family="Arial" font-size="72" font-weight="900" 
+        style="letter-spacing: -4px;">INVOICE</text>
+  <text x="44" y="140" fill="#A1A1AA" font-family="Arial" font-size="20">#INV-2024-0001</text>
+  
+  <!-- Dynamic Info Layout -->
+  <g transform="translate(40, 180)">
+    <rect width="360" height="140" rx="12" fill="#27272A"/>
+    <text x="30" y="40" fill="#71717A" font-family="Arial" font-size="14" font-weight="bold">FROM</text>
+    <text x="30" y="80" fill="white" font-family="Arial" font-size="24" font-weight="bold">Your Company</text>
+    <text x="30" y="110" fill="#A1A1AA" font-family="Arial" font-size="16">123 Business Street</text>
+  </g>
+  
+  <g transform="translate(420, 180)">
+    <rect width="340" height="140" rx="12" fill="#27272A"/>
+    <text x="30" y="40" fill="#71717A" font-family="Arial" font-size="14" font-weight="bold">BILL TO</text>
+    <text x="30" y="80" fill="white" font-family="Arial" font-size="24" font-weight="bold">Client Name</text>
+    <text x="30" y="110" fill="#A1A1AA" font-family="Arial" font-size="16">456 Client Avenue</text>
+  </g>
+  
+  <!-- Modern Table -->
+  <g transform="translate(40, 360)">
+    <rect width="720" height="60" rx="8" fill="#27272A"/>
+    <text x="30" y="35" fill="#71717A" font-family="Arial" font-size="14" font-weight="bold">DESCRIPTION</text>
+    <text x="450" y="35" fill="#71717A" font-family="Arial" font-size="14" font-weight="bold" text-anchor="end">QTY</text>
+    <text x="550" y="35" fill="#71717A" font-family="Arial" font-size="14" font-weight="bold" text-anchor="end">PRICE</text>
+    <text x="690" y="35" fill="#71717A" font-family="Arial" font-size="14" font-weight="bold" text-anchor="end">TOTAL</text>
+  </g>
+  
+  <!-- Table Row -->
+  <g transform="translate(40, 420)">
+    <rect width="720" height="50" fill="#27272A" opacity="0.5"/>
+    <text x="30" y="32" fill="white" font-family="Arial" font-size="16">Website Design</text>
+    <text x="450" y="32" fill="white" font-family="Arial" font-size="16" text-anchor="end">1</text>
+    <text x="550" y="32" fill="white" font-family="Arial" font-size="16" text-anchor="end">$2,000.00</text>
+    <text x="690" y="32" fill="white" font-family="Arial" font-size="16" text-anchor="end">$2,000.00</text>
+  </g>
+  
+  <!-- Dynamic Total Section -->
+  <g transform="translate(460, 500)">
+    <rect width="300" height="60" rx="8" fill="#27272A"/>
+    <text x="30" y="38" fill="white" font-family="Arial" font-size="18" font-weight="bold">TOTAL</text>
+    <text x="270" y="38" fill="white" font-family="Arial" font-size="18" font-weight="bold" text-anchor="end">$2,000.00</text>
+  </g>
+  
+  <!-- Modern Footer -->
+  <text x="400" y="580" fill="#71717A" font-family="Arial" font-size="16" text-anchor="middle" 
+        style="letter-spacing: 2px;">THANK YOU FOR YOUR BUSINESS</text>
+</svg> 

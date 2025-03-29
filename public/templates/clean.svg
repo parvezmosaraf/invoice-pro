@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clean Background -->
+  <rect width="800" height="600" fill="#FFFFFF"/>
+  
+  <!-- Minimal Header -->
+  <text x="40" y="80" fill="#111827" font-family="Arial" font-size="36" font-weight="300">invoice</text>
+  <text x="40" y="110" fill="#6B7280" font-family="Arial" font-size="14">#INV-2024-0001</text>
+  
+  <!-- Subtle Accent Line -->
+  <line x1="40" y1="140" x2="760" y2="140" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Clean Info Sections -->
+  <text x="40" y="180" fill="#6B7280" font-family="Arial" font-size="12" letter-spacing="1">FROM</text>
+  <text x="40" y="210" fill="#111827" font-family="Arial" font-size="16">Your Company Name</text>
+  <text x="40" y="235" fill="#4B5563" font-family="Arial" font-size="14">123 Business Street</text>
+  
+  <text x="400" y="180" fill="#6B7280" font-family="Arial" font-size="12" letter-spacing="1">BILL TO</text>
+  <text x="400" y="210" fill="#111827" font-family="Arial" font-size="16">Client Name</text>
+  <text x="400" y="235" fill="#4B5563" font-family="Arial" font-size="14">456 Client Avenue</text>
+  
+  <!-- Minimal Table -->
+  <line x1="40" y1="300" x2="760" y2="300" stroke="#F3F4F6" stroke-width="2"/>
+  <text x="40" y="290" fill="#6B7280" font-family="Arial" font-size="12" letter-spacing="1">DESCRIPTION</text>
+  <text x="500" y="290" fill="#6B7280" font-family="Arial" font-size="12" letter-spacing="1" text-anchor="end">QUANTITY</text>
+  <text x="600" y="290" fill="#6B7280" font-family="Arial" font-size="12" letter-spacing="1" text-anchor="end">PRICE</text>
+  <text x="760" y="290" fill="#6B7280" font-family="Arial" font-size="12" letter-spacing="1" text-anchor="end">TOTAL</text>
+  
+  <!-- Sample Row -->
+  <text x="40" y="330" fill="#111827" font-family="Arial" font-size="14">Website Design</text>
+  <text x="500" y="330" fill="#111827" font-family="Arial" font-size="14" text-anchor="end">1</text>
+  <text x="600" y="330" fill="#111827" font-family="Arial" font-size="14" text-anchor="end">$2,000.00</text>
+  <text x="760" y="330" fill="#111827" font-family="Arial" font-size="14" text-anchor="end">$2,000.00</text>
+  
+  <!-- Total Section -->
+  <line x1="500" y1="380" x2="760" y2="380" stroke="#F3F4F6" stroke-width="1"/>
+  <text x="500" y="410" fill="#6B7280" font-family="Arial" font-size="14">Total</text>
+  <text x="760" y="410" fill="#111827" font-family="Arial" font-size="16" font-weight="500" text-anchor="end">$2,000.00</text>
+  
+  <!-- Minimal Footer -->
+  <text x="400" y="540" fill="#6B7280" font-family="Arial" font-size="14" text-anchor="middle">Thank you for your business</text>
+</svg> 

@@ -70,6 +70,76 @@ const templates = [
     description: "Professional template with advanced layout and elegant styling",
     thumbnail: "/templates/business-pro.svg",
     preview: "/templates/business-pro.svg"
+  },
+  {
+    id: 10,
+    name: "Boutique",
+    description: "Elegant design with rose gold accents and refined typography",
+    thumbnail: "/templates/boutique.svg",
+    preview: "/templates/boutique.svg"
+  },
+  {
+    id: 11,
+    name: "Tech",
+    description: "Modern tech-inspired design with neon accents and dark theme",
+    thumbnail: "/templates/tech.svg",
+    preview: "/templates/tech.svg"
+  },
+  {
+    id: 12,
+    name: "Nature",
+    description: "Eco-friendly design with organic shapes and green accents",
+    thumbnail: "/templates/nature.svg",
+    preview: "/templates/nature.svg"
+  },
+  {
+    id: 13,
+    name: "Vintage",
+    description: "Classic vintage style with ornate borders and sepia tones",
+    thumbnail: "/templates/vintage.svg",
+    preview: "/templates/vintage.svg"
+  },
+  {
+    id: 14,
+    name: "Artistic",
+    description: "Creative design with bold colors and abstract shapes",
+    thumbnail: "/templates/artistic.svg",
+    preview: "/templates/artistic.svg"
+  },
+  {
+    id: 15,
+    name: "Luxury",
+    description: "Premium design with gold accents and elegant styling",
+    thumbnail: "/templates/luxury.svg",
+    preview: "/templates/luxury.svg"
+  },
+  {
+    id: 16,
+    name: "Gradient",
+    description: "Modern design with beautiful color gradients",
+    thumbnail: "/templates/gradient.svg",
+    preview: "/templates/gradient.svg"
+  },
+  {
+    id: 17,
+    name: "Clean",
+    description: "Minimal design with perfect balance of whitespace",
+    thumbnail: "/templates/clean.svg",
+    preview: "/templates/clean.svg"
+  },
+  {
+    id: 18,
+    name: "Professional",
+    description: "Timeless design for established businesses",
+    thumbnail: "/templates/professional.svg",
+    preview: "/templates/professional.svg"
+  },
+  {
+    id: 19,
+    name: "Dynamic",
+    description: "Modern design with dynamic layout and bold typography",
+    thumbnail: "/templates/dynamic.svg",
+    preview: "/templates/dynamic.svg"
   }
 ];
 

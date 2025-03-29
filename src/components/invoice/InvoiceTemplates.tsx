@@ -735,18 +735,699 @@ export const BusinessProTemplate = ({ data }: InvoiceTemplateProps) => {
   );
 };
 
+export const BoutiqueTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-white p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-light text-pink-900 tracking-wider">INVOICE</h1>
+          <p className="text-pink-700 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-pink-700">Issue Date: {data.issueDate}</p>
+          <p className="text-pink-700">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-pink-50 p-6 rounded-lg">
+          <h2 className="text-pink-900 font-semibold mb-2 tracking-wide">FROM</h2>
+          <p className="text-pink-900">{data.company.name}</p>
+          <p className="text-pink-700">{data.company.address}</p>
+          <p className="text-pink-700">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-pink-50 p-6 rounded-lg">
+          <h2 className="text-pink-900 font-semibold mb-2 tracking-wide">BILL TO</h2>
+          <p className="text-pink-900">{data.client.name}</p>
+          <p className="text-pink-700">{data.client.company}</p>
+          <p className="text-pink-700">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-pink-50 rounded-lg overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="text-left py-4 px-6 text-pink-900">Description</th>
+              <th className="text-right py-4 px-6 text-pink-900">Quantity</th>
+              <th className="text-right py-4 px-6 text-pink-900">Price</th>
+              <th className="text-right py-4 px-6 text-pink-900">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-t border-pink-200">
+                <td className="py-4 px-6 text-pink-900">{item.description}</td>
+                <td className="text-right py-4 px-6 text-pink-700">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-pink-700">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-pink-700">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3">
+          <div className="flex justify-between py-2">
+            <span className="text-pink-700">Subtotal</span>
+            <span className="text-pink-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-pink-200">
+            <span className="font-semibold text-pink-900">Total</span>
+            <span className="font-semibold text-pink-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="border-t border-pink-200 pt-4">
+          <h2 className="text-pink-900 font-semibold mb-2">Notes</h2>
+          <p className="text-pink-700">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const TechTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-slate-900 text-white p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-bold text-cyan-400 tracking-tight">INVOICE</h1>
+          <p className="text-slate-400 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="border border-cyan-500 rounded-lg p-4">
+          <p className="text-cyan-400 text-sm">Amount Due</p>
+          <p className="text-2xl font-bold">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-slate-800 p-6 rounded-lg">
+          <h2 className="text-slate-400 text-sm font-medium mb-2">FROM</h2>
+          <p className="text-white font-medium">{data.company.name}</p>
+          <p className="text-slate-400">{data.company.address}</p>
+          <p className="text-slate-400">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-slate-800 p-6 rounded-lg">
+          <h2 className="text-slate-400 text-sm font-medium mb-2">BILL TO</h2>
+          <p className="text-white font-medium">{data.client.name}</p>
+          <p className="text-slate-400">{data.client.company}</p>
+          <p className="text-slate-400">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-slate-800 rounded-lg overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-slate-700">
+              <th className="text-left py-4 px-6 text-slate-400">Description</th>
+              <th className="text-right py-4 px-6 text-slate-400">Quantity</th>
+              <th className="text-right py-4 px-6 text-slate-400">Price</th>
+              <th className="text-right py-4 px-6 text-slate-400">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-b border-slate-700">
+                <td className="py-4 px-6">{item.description}</td>
+                <td className="text-right py-4 px-6">{item.quantity}</td>
+                <td className="text-right py-4 px-6">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3">
+          <div className="flex justify-between py-2">
+            <span className="text-slate-400">Subtotal</span>
+            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-slate-700">
+            <span className="font-medium text-cyan-400">Total</span>
+            <span className="font-medium text-cyan-400">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="bg-slate-800 p-4 rounded-lg">
+          <h2 className="text-slate-400 font-medium mb-2">Notes</h2>
+          <p className="text-slate-300">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const NatureTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-green-50 p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-light text-green-800">Invoice</h1>
+          <p className="text-green-600 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-green-600">Issue Date: {data.issueDate}</p>
+          <p className="text-green-600">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-white border-2 border-green-200 p-6 rounded-xl">
+          <h2 className="text-green-600 font-medium mb-2">FROM</h2>
+          <p className="text-green-800 font-medium">{data.company.name}</p>
+          <p className="text-green-600">{data.company.address}</p>
+          <p className="text-green-600">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-white border-2 border-green-200 p-6 rounded-xl">
+          <h2 className="text-green-600 font-medium mb-2">BILL TO</h2>
+          <p className="text-green-800 font-medium">{data.client.name}</p>
+          <p className="text-green-600">{data.client.company}</p>
+          <p className="text-green-600">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-white border-2 border-green-200 rounded-xl overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-green-100">
+              <th className="text-left py-4 px-6 text-green-800">Description</th>
+              <th className="text-right py-4 px-6 text-green-800">Quantity</th>
+              <th className="text-right py-4 px-6 text-green-800">Price</th>
+              <th className="text-right py-4 px-6 text-green-800">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-t border-green-100">
+                <td className="py-4 px-6 text-green-800">{item.description}</td>
+                <td className="text-right py-4 px-6 text-green-600">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-green-600">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-green-600">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3 bg-white border-2 border-green-200 rounded-xl p-4">
+          <div className="flex justify-between py-2">
+            <span className="text-green-600">Subtotal</span>
+            <span className="text-green-800">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-green-100">
+            <span className="font-medium text-green-800">Total</span>
+            <span className="font-medium text-green-800">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="bg-white border-2 border-green-200 p-4 rounded-xl">
+          <h2 className="text-green-800 font-medium mb-2">Notes</h2>
+          <p className="text-green-600">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const VintageTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-amber-50 p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-serif text-amber-900">INVOICE</h1>
+          <p className="text-amber-700 font-serif mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-amber-700 font-serif">Issue Date: {data.issueDate}</p>
+          <p className="text-amber-700 font-serif">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="border-2 border-amber-200 p-6 rounded">
+          <h2 className="text-amber-900 font-serif font-medium mb-2">FROM</h2>
+          <p className="text-amber-900 font-serif">{data.company.name}</p>
+          <p className="text-amber-700">{data.company.address}</p>
+          <p className="text-amber-700">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="border-2 border-amber-200 p-6 rounded">
+          <h2 className="text-amber-900 font-serif font-medium mb-2">BILL TO</h2>
+          <p className="text-amber-900 font-serif">{data.client.name}</p>
+          <p className="text-amber-700">{data.client.company}</p>
+          <p className="text-amber-700">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="border-2 border-amber-200 rounded overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-amber-100">
+              <th className="text-left py-4 px-6 text-amber-900 font-serif">Description</th>
+              <th className="text-right py-4 px-6 text-amber-900 font-serif">Quantity</th>
+              <th className="text-right py-4 px-6 text-amber-900 font-serif">Price</th>
+              <th className="text-right py-4 px-6 text-amber-900 font-serif">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-t border-amber-200">
+                <td className="py-4 px-6 text-amber-900">{item.description}</td>
+                <td className="text-right py-4 px-6 text-amber-700">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-amber-700">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-amber-700">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3 border-2 border-amber-200 p-4 rounded">
+          <div className="flex justify-between py-2">
+            <span className="text-amber-700 font-serif">Subtotal</span>
+            <span className="text-amber-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-amber-200">
+            <span className="font-medium text-amber-900 font-serif">Total</span>
+            <span className="font-medium text-amber-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="border-t-2 border-amber-200 pt-4">
+          <h2 className="text-amber-900 font-serif font-medium mb-2">Notes</h2>
+          <p className="text-amber-700">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const ArtisticTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-purple-50 p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-5xl font-light text-purple-900 tracking-wide">invoice</h1>
+          <p className="text-purple-600 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-purple-600">Issue Date: {data.issueDate}</p>
+          <p className="text-purple-600">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <h2 className="text-purple-900 font-medium mb-2">FROM</h2>
+          <p className="text-purple-900">{data.company.name}</p>
+          <p className="text-purple-600">{data.company.address}</p>
+          <p className="text-purple-600">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <h2 className="text-purple-900 font-medium mb-2">BILL TO</h2>
+          <p className="text-purple-900">{data.client.name}</p>
+          <p className="text-purple-600">{data.client.company}</p>
+          <p className="text-purple-600">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-purple-100">
+              <th className="text-left py-4 px-6 text-purple-900">Description</th>
+              <th className="text-right py-4 px-6 text-purple-900">Quantity</th>
+              <th className="text-right py-4 px-6 text-purple-900">Price</th>
+              <th className="text-right py-4 px-6 text-purple-900">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-b border-purple-50">
+                <td className="py-4 px-6 text-purple-900">{item.description}</td>
+                <td className="text-right py-4 px-6 text-purple-600">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-purple-600">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-purple-600">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3 bg-white p-4 rounded-lg shadow-lg">
+          <div className="flex justify-between py-2">
+            <span className="text-purple-600">Subtotal</span>
+            <span className="text-purple-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-purple-100">
+            <span className="font-medium text-purple-900">Total</span>
+            <span className="font-medium text-purple-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="bg-white p-4 rounded-lg shadow-lg">
+          <h2 className="text-purple-900 font-medium mb-2">Notes</h2>
+          <p className="text-purple-600">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const LuxuryTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-5xl font-light text-yellow-500 tracking-wider">INVOICE</h1>
+          <p className="text-gray-400 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-gray-400">Issue Date: {data.issueDate}</p>
+          <p className="text-gray-400">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-gray-800 border border-yellow-500/20 p-6 rounded-lg">
+          <h2 className="text-yellow-500 font-medium mb-2">FROM</h2>
+          <p className="text-white">{data.company.name}</p>
+          <p className="text-gray-400">{data.company.address}</p>
+          <p className="text-gray-400">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-gray-800 border border-yellow-500/20 p-6 rounded-lg">
+          <h2 className="text-yellow-500 font-medium mb-2">BILL TO</h2>
+          <p className="text-white">{data.client.name}</p>
+          <p className="text-gray-400">{data.client.company}</p>
+          <p className="text-gray-400">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-gray-800 border border-yellow-500/20 rounded-lg overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-yellow-500/20">
+              <th className="text-left py-4 px-6 text-yellow-500">Description</th>
+              <th className="text-right py-4 px-6 text-yellow-500">Quantity</th>
+              <th className="text-right py-4 px-6 text-yellow-500">Price</th>
+              <th className="text-right py-4 px-6 text-yellow-500">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-b border-gray-700">
+                <td className="py-4 px-6">{item.description}</td>
+                <td className="text-right py-4 px-6 text-gray-400">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-gray-400">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-gray-400">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3 bg-gray-800 border border-yellow-500/20 p-4 rounded-lg">
+          <div className="flex justify-between py-2">
+            <span className="text-gray-400">Subtotal</span>
+            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-yellow-500/20">
+            <span className="font-medium text-yellow-500">Total</span>
+            <span className="font-medium text-yellow-500">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="bg-gray-800 border border-yellow-500/20 p-4 rounded-lg">
+          <h2 className="text-yellow-500 font-medium mb-2">Notes</h2>
+          <p className="text-gray-400">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const GradientTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-5xl font-bold tracking-tight">INVOICE</h1>
+          <p className="text-blue-100 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-blue-100">Issue Date: {data.issueDate}</p>
+          <p className="text-blue-100">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <h2 className="text-blue-100 font-medium mb-2">FROM</h2>
+          <p className="text-white">{data.company.name}</p>
+          <p className="text-blue-100">{data.company.address}</p>
+          <p className="text-blue-100">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <h2 className="text-blue-100 font-medium mb-2">BILL TO</h2>
+          <p className="text-white">{data.client.name}</p>
+          <p className="text-blue-100">{data.client.company}</p>
+          <p className="text-blue-100">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-white/20">
+              <th className="text-left py-4 px-6 text-blue-100">Description</th>
+              <th className="text-right py-4 px-6 text-blue-100">Quantity</th>
+              <th className="text-right py-4 px-6 text-blue-100">Price</th>
+              <th className="text-right py-4 px-6 text-blue-100">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-b border-white/10">
+                <td className="py-4 px-6">{item.description}</td>
+                <td className="text-right py-4 px-6 text-blue-100">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-blue-100">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-blue-100">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3 bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+          <div className="flex justify-between py-2">
+            <span className="text-blue-100">Subtotal</span>
+            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-white/20">
+            <span className="font-medium">Total</span>
+            <span className="font-medium">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+          <h2 className="text-blue-100 font-medium mb-2">Notes</h2>
+          <p className="text-blue-100">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const CleanTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-white p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-medium text-gray-900">Invoice</h1>
+          <p className="text-gray-500 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-gray-500">Issue Date: {data.issueDate}</p>
+          <p className="text-gray-500">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div>
+          <h2 className="text-gray-700 font-medium mb-2">FROM</h2>
+          <p className="text-gray-900">{data.company.name}</p>
+          <p className="text-gray-500">{data.company.address}</p>
+          <p className="text-gray-500">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div>
+          <h2 className="text-gray-700 font-medium mb-2">BILL TO</h2>
+          <p className="text-gray-900">{data.client.name}</p>
+          <p className="text-gray-500">{data.client.company}</p>
+          <p className="text-gray-500">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="border border-gray-200 rounded-lg overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-gray-50">
+              <th className="text-left py-4 px-6 text-gray-700">Description</th>
+              <th className="text-right py-4 px-6 text-gray-700">Quantity</th>
+              <th className="text-right py-4 px-6 text-gray-700">Price</th>
+              <th className="text-right py-4 px-6 text-gray-700">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-t border-gray-200">
+                <td className="py-4 px-6 text-gray-900">{item.description}</td>
+                <td className="text-right py-4 px-6 text-gray-500">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-gray-500">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-gray-500">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3">
+          <div className="flex justify-between py-2">
+            <span className="text-gray-500">Subtotal</span>
+            <span className="text-gray-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-gray-200">
+            <span className="font-medium text-gray-900">Total</span>
+            <span className="font-medium text-gray-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="border-t border-gray-200 pt-4">
+          <h2 className="text-gray-700 font-medium mb-2">Notes</h2>
+          <p className="text-gray-500">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const ProfessionalTemplate = ({ data }: InvoiceTemplateProps) => {
+  return (
+    <div className="bg-slate-50 p-8 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-semibold text-slate-900">INVOICE</h1>
+          <p className="text-slate-600 mt-1">#{data.invoiceNumber}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-slate-600">Issue Date: {data.issueDate}</p>
+          <p className="text-slate-600">Due Date: {data.dueDate}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="bg-white p-6 rounded-lg shadow-sm">
+          <h2 className="text-slate-800 font-medium mb-2">FROM</h2>
+          <p className="text-slate-900">{data.company.name}</p>
+          <p className="text-slate-600">{data.company.address}</p>
+          <p className="text-slate-600">{data.company.city}, {data.company.country} {data.company.postalCode}</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-sm">
+          <h2 className="text-slate-800 font-medium mb-2">BILL TO</h2>
+          <p className="text-slate-900">{data.client.name}</p>
+          <p className="text-slate-600">{data.client.company}</p>
+          <p className="text-slate-600">{data.client.address}</p>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-slate-100">
+              <th className="text-left py-4 px-6 text-slate-800">Description</th>
+              <th className="text-right py-4 px-6 text-slate-800">Quantity</th>
+              <th className="text-right py-4 px-6 text-slate-800">Price</th>
+              <th className="text-right py-4 px-6 text-slate-800">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.id} className="border-t border-slate-200">
+                <td className="py-4 px-6 text-slate-900">{item.description}</td>
+                <td className="text-right py-4 px-6 text-slate-600">{item.quantity}</td>
+                <td className="text-right py-4 px-6 text-slate-600">{data.currency} {item.price.toFixed(2)}</td>
+                <td className="text-right py-4 px-6 text-slate-600">{data.currency} {(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex justify-end mb-8">
+        <div className="w-1/3 bg-white p-4 rounded-lg shadow-sm">
+          <div className="flex justify-between py-2">
+            <span className="text-slate-600">Subtotal</span>
+            <span className="text-slate-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 border-t border-slate-200">
+            <span className="font-medium text-slate-900">Total</span>
+            <span className="font-medium text-slate-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      {data.notes && (
+        <div className="bg-white p-4 rounded-lg shadow-sm">
+          <h2 className="text-slate-800 font-medium mb-2">Notes</h2>
+          <p className="text-slate-600">{data.notes}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export function getTemplateComponent(template: string) {
-  const templates: { [key: string]: React.FC<InvoiceTemplateProps> } = {
+  const templates: { [key: string]: React.ComponentType<InvoiceTemplateProps> } = {
     classic: ClassicTemplate,
     modern: ModernTemplate,
     creative: CreativeTemplate,
     corporate: CorporateTemplate,
     minimalist: MinimalistTemplate,
     elegant: ElegantTemplate,
-    premium: PremiumTemplate,
-    minimalistPro: MinimalistProTemplate,
-    businessPro: BusinessProTemplate,
+    boutique: BoutiqueTemplate,
+    tech: TechTemplate,
+    nature: NatureTemplate,
+    vintage: VintageTemplate,
+    artistic: ArtisticTemplate,
+    luxury: LuxuryTemplate,
+    gradient: GradientTemplate,
+    clean: CleanTemplate,
+    professional: ProfessionalTemplate,
   };
 
-  return templates[template] || ClassicTemplate;
+  return templates[template.toLowerCase()] || ClassicTemplate;
 } 

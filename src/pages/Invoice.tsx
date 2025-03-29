@@ -43,7 +43,13 @@ const invoiceSchema = z.object({
       id: z.string(),
       description: z.string().min(1, { message: "Description is required" }),
       quantity: z.number().min(1, { message: "Quantity must be at least 1" }),
-      price: z.number().min(0, { message: "Price must be at least 0" }),
+      price: z.union([z.string(), z.number()]).transform((val) => {
+        if (typeof val === "string" && val === "") {
+          return 0;
+        }
+        const num = typeof val === "string" ? parseFloat(val) : val;
+        return isNaN(num) ? 0 : num;
+      }).refine((val) => val >= 0, { message: "Price must be at least 0" }),
     })
   ).min(1, { message: "Add at least one item" }),
 });
@@ -60,7 +66,7 @@ const currencies = [
 
 export default function Invoice() {
   const { toast } = useToast();
-  const [items, setItems] = useState([{ id: generateId(), description: "", quantity: 1, price: 0 }]);
+  const [items, setItems] = useState([{ id: generateId(), description: "", quantity: 1, price: "" }]);
   const [activeTab, setActiveTab] = useState("all");
   const [clients, setClients] = useState(ClientService.getAll());
   const [invoices, setInvoices] = useState(InvoiceService.getAll());
@@ -102,12 +108,12 @@ export default function Invoice() {
         country: "",
         postalCode: "",
       },
-      items: [{ id: generateId(), description: "", quantity: 1, price: 0 }],
+      items: [{ id: generateId(), description: "", quantity: 1, price: "" }],
     },
   });
   
   const addItem = () => {
-    const newItem = { id: generateId(), description: "", quantity: 1, price: 0 };
+    const newItem = { id: generateId(), description: "", quantity: 1, price: "" };
     const newItems = [...items, newItem];
     setItems(newItems);
     form.setValue('items', newItems);
@@ -123,7 +129,10 @@ export default function Invoice() {
   };
   
   const calculateSubtotal = () => {
-    return items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+    return items.reduce((sum, item) => {
+      const price = typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price;
+      return sum + (item.quantity * price);
+    }, 0);
   };
   
   const onSubmit = (data: InvoiceValues) => {
@@ -137,6 +146,12 @@ export default function Invoice() {
       return;
     }
     
+    // Convert string prices to numbers for submission
+    const submissionItems = data.items.map(item => ({
+      ...item,
+      price: typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price
+    }));
+    
     // Create the invoice object with a generated invoice number
     const newInvoice = {
       id: generateId(),
@@ -148,7 +163,7 @@ export default function Invoice() {
       currency: data.currency,
       notes: data.notes || "",
       company: data.company,
-      items: data.items,
+      items: submissionItems,
       status: 'pending' as const,
     };
     
@@ -167,7 +182,7 @@ export default function Invoice() {
       
       // Reset form and items
       form.reset();
-      setItems([{ id: generateId(), description: "", quantity: 1, price: 0 }]);
+      setItems([{ id: generateId(), description: "", quantity: 1, price: "" }]);
       setActiveTab("all");
     } catch (error) {
       toast({
@@ -325,6 +340,12 @@ export default function Invoice() {
       address: "123 Example St",
     };
 
+    // Convert string prices to numbers for preview
+    const previewItems = items.map(item => ({
+      ...item,
+      price: typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price
+    }));
+
     return {
       id: "preview",
       invoiceNumber: "INV-2024-0000",
@@ -335,7 +356,7 @@ export default function Invoice() {
       currency: formData.currency,
       notes: formData.notes || "",
       company: formData.company,
-      items: items,
+      items: previewItems,
       status: "draft" as const,
     };
   };
@@ -616,12 +637,13 @@ export default function Invoice() {
                                         placeholder="Price"
                                         min="0"
                                         step="0.01"
-                                        value={item.price}
+                                        value={item.price === "" ? "" : item.price}
                                         onChange={(e) => {
                                           const newItems = [...items];
-                                          newItems[index].price = parseFloat(e.target.value) || 0;
+                                          const value = e.target.value;
+                                          newItems[index].price = value === "" ? "" : parseFloat(value);
                                           setItems(newItems);
-                                          form.setValue(`items.${index}.price`, parseFloat(e.target.value) || 0);
+                                          form.setValue(`items.${index}.price`, value === "" ? "" : parseFloat(value));
                                         }}
                                       />
                                     </div>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Artistic Background -->
+  <rect width="800" height="600" fill="#EEF2FF"/>
+  <path d="M0 0 L800 0 L700 600 L0 500 Z" fill="#C7D2FE" opacity="0.5"/>
+  <circle cx="700" cy="100" r="200" fill="#818CF8" opacity="0.1"/>
+  
+  <!-- Abstract Shapes -->
+  <path d="M50 50 L100 20 L150 50 L100 80 Z" fill="#6366F1" opacity="0.8"/>
+  <circle cx="750" cy="550" r="30" fill="#4F46E5" opacity="0.6"/>
+  <rect x="680" y="40" width="40" height="40" transform="rotate(45 700 60)" fill="#4F46E5" opacity="0.4"/>
+  
+  <!-- Bold Header -->
+  <text x="40" y="120" fill="#312E81" font-family="Arial" font-size="64" font-weight="bold" 
+        style="letter-spacing: -2px;">INVOICE</text>
+  <text x="44" y="150" fill="#4F46E5" font-family="Arial" font-size="18">#INV-2024-0001</text>
+  
+  <!-- Artistic Info Boxes -->
+  <g transform="translate(40, 180)">
+    <path d="M0 0 L320 0 L300 120 L0 120 Z" fill="white" stroke="#6366F1" stroke-width="2"/>
+    <text x="20" y="30" fill="#4F46E5" font-family="Arial" font-size="12" font-weight="bold">FROM</text>
+    <text x="20" y="60" fill="#312E81" font-family="Arial" font-size="16">Your Company Name</text>
+    <text x="20" y="85" fill="#6366F1" font-family="Arial" font-size="14">123 Business Street</text>
+  </g>
+  
+  <g transform="translate(440, 180)">
+    <path d="M0 0 L320 0 L340 120 L20 120 Z" fill="white" stroke="#6366F1" stroke-width="2"/>
+    <text x="20" y="30" fill="#4F46E5" font-family="Arial" font-size="12" font-weight="bold">BILL TO</text>
+    <text x="20" y="60" fill="#312E81" font-family="Arial" font-size="16">Client Name</text>
+    <text x="20" y="85" fill="#6366F1" font-family="Arial" font-size="14">456 Client Avenue</text>
+  </g>
+  
+  <!-- Creative Table Design -->
+  <g transform="translate(40, 340)">
+    <rect width="720" height="40" fill="#EEF2FF" stroke="#6366F1" stroke-width="2" rx="20"/>
+    <text x="20" y="25" fill="#312E81" font-family="Arial" font-size="14">Description</text>
+    <text x="460" y="25" fill="#312E81" font-family="Arial" font-size="14" text-anchor="end">Quantity</text>
+    <text x="560" y="25" fill="#312E81" font-family="Arial" font-size="14" text-anchor="end">Price</text>
+    <text x="700" y="25" fill="#312E81" font-family="Arial" font-size="14" text-anchor="end">Total</text>
+  </g>
+  
+  <!-- Artistic Footer -->
+  <g transform="translate(0, 500)">
+    <path d="M300 0 L500 0 L520 40 L280 40 Z" fill="#4F46E5" opacity="0.1"/>
+    <text x="400" y="25" fill="#4F46E5" font-family="Arial" font-size="14" text-anchor="middle">Thank you for your business</text>
+  </g>
+</svg> 
