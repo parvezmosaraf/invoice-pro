@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 import UserService from "@/services/UserService";
 import { NavLink } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -61,12 +60,11 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
       {/* Desktop Sidebar */}
       <aside className="fixed inset-y-0 left-0 z-50 hidden lg:block w-72 border-r bg-card">
         <div className="flex h-full flex-col">
-          <div className="border-b px-6 py-4 flex items-center justify-between">
+          <div className="border-b px-6 py-4">
             <Link to="/" className="flex items-center gap-2">
               <FileText className="h-6 w-6 text-primary" />
               <span className="text-xl font-semibold">ProInvoice</span>
             </Link>
-            <ThemeToggle />
           </div>
           <nav className="flex-1 space-y-1 p-4">
             {navItems.map((item) => (
@@ -100,12 +98,11 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
             </SheetTrigger>
             <SheetContent side="left" className="w-72 p-0">
               <div className="flex h-full flex-col">
-                <div className="border-b px-6 py-4 flex items-center justify-between">
+                <div className="border-b px-6 py-4">
                   <Link to="/" className="flex items-center gap-2">
                     <FileText className="h-6 w-6 text-primary" />
                     <span className="text-xl font-semibold">ProInvoice</span>
                   </Link>
-                  <ThemeToggle />
                 </div>
                 <nav className="flex-1 space-y-1 p-4">
                   {navItems.map((item) => (
@@ -130,7 +127,6 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
           <div className="flex-1">
             <h1 className="text-lg font-semibold">{title}</h1>
           </div>
-          <ThemeToggle />
         </div>
       </header>
 
