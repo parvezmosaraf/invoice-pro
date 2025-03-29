@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="white" />
+  
+  <!-- Header -->
+  <text x="40" y="100" fill="#1F2937" font-family="Arial" font-size="64" font-weight="200">Invoice</text>
+  <text x="40" y="140" fill="#6B7280" font-family="Arial" font-size="16">#INV-2024-0001</text>
+  
+  <!-- Dates -->
+  <text x="600" y="80" fill="#6B7280" font-family="Arial" font-size="14" text-anchor="end">Issue Date: Jan 15, 2024</text>
+  <text x="600" y="100" fill="#6B7280" font-family="Arial" font-size="14" text-anchor="end">Due Date: Feb 15, 2024</text>
+  
+  <!-- From Section -->
+  <rect x="40" y="180" width="48" height="2" fill="#3B82F6" />
+  <text x="40" y="210" fill="#6B7280" font-family="Arial" font-size="12">FROM</text>
+  <text x="40" y="235" fill="#1F2937" font-family="Arial" font-size="18" font-weight="500">Your Company Name</text>
+  <text x="40" y="260" fill="#6B7280" font-family="Arial" font-size="14">123 Business Street</text>
+  <text x="40" y="280" fill="#6B7280" font-family="Arial" font-size="14">City, Country</text>
+  
+  <!-- To Section -->
+  <rect x="400" y="180" width="48" height="2" fill="#E5E7EB" />
+  <text x="400" y="210" fill="#6B7280" font-family="Arial" font-size="12">BILL TO</text>
+  <text x="400" y="235" fill="#1F2937" font-family="Arial" font-size="18" font-weight="500">Client Name</text>
+  <text x="400" y="260" fill="#6B7280" font-family="Arial" font-size="14">456 Client Avenue</text>
+  <text x="400" y="280" fill="#6B7280" font-family="Arial" font-size="14">Client City</text>
+  
+  <!-- Table Header -->
+  <rect x="40" y="340" width="720" height="1" fill="#F3F4F6" />
+  <text x="40" y="330" fill="#6B7280" font-family="Arial" font-size="14">Description</text>
+  <text x="500" y="330" fill="#6B7280" font-family="Arial" font-size="14" text-anchor="end">Quantity</text>
+  <text x="600" y="330" fill="#6B7280" font-family="Arial" font-size="14" text-anchor="end">Price</text>
+  <text x="760" y="330" fill="#6B7280" font-family="Arial" font-size="14" text-anchor="end">Total</text>
+  
+  <!-- Table Row -->
+  <text x="40" y="380" fill="#1F2937" font-family="Arial" font-size="14">Website Design</text>
+  <text x="500" y="380" fill="#1F2937" font-family="Arial" font-size="14" text-anchor="end">1</text>
+  <text x="600" y="380" fill="#1F2937" font-family="Arial" font-size="14" text-anchor="end">$2,000.00</text>
+  <text x="760" y="380" fill="#1F2937" font-family="Arial" font-size="14" text-anchor="end">$2,000.00</text>
+  
+  <!-- Total Section -->
+  <rect x="560" y="440" width="200" height="1" fill="#F3F4F6" />
+  <text x="560" y="470" fill="#6B7280" font-family="Arial" font-size="14">Total</text>
+  <text x="760" y="470" fill="#3B82F6" font-family="Arial" font-size="16" font-weight="500" text-anchor="end">$2,450.00</text>
+</svg> 

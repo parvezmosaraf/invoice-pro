@@ -49,6 +49,27 @@ const templates = [
     description: "Sophisticated design with premium styling",
     thumbnail: "/templates/elegant.svg",
     preview: "/templates/elegant.svg"
+  },
+  {
+    id: 7,
+    name: "Premium Dark",
+    description: "Modern dark theme with gradient accents and sleek design",
+    thumbnail: "/templates/premium.svg",
+    preview: "/templates/premium.svg"
+  },
+  {
+    id: 8,
+    name: "Minimalist Pro",
+    description: "Enhanced minimalist design with modern touches and clean typography",
+    thumbnail: "/templates/minimalist-pro.svg",
+    preview: "/templates/minimalist-pro.svg"
+  },
+  {
+    id: 9,
+    name: "Business Pro",
+    description: "Professional template with advanced layout and elegant styling",
+    thumbnail: "/templates/business-pro.svg",
+    preview: "/templates/business-pro.svg"
   }
 ];
 
