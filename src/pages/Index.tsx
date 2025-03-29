@@ -5,6 +5,8 @@ import { FileText, CheckCircle, ChevronRight, LogOut, Sparkles, Star, Zap, Crown
 import { motion, AnimatePresence } from "framer-motion";
 import UserService from "@/services/UserService";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const features = [
   "Create professional invoices in seconds",
@@ -169,6 +171,9 @@ const notificationData = [
   }
 ];
 
+// Add this CSS class
+const textGradientClass = "bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50";
+
 const Index = () => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
@@ -191,7 +196,7 @@ const Index = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-background">
         {/* Navigation */}
         <header className="w-full py-4 px-4 border-b sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -201,6 +206,7 @@ const Index = () => {
             </Link>
             
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               {userEmail ? (
                 <>
                   <Link to="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">
@@ -253,7 +259,7 @@ const Index = () => {
                 >
                   <div className="relative">
                     <div className={`absolute -inset-1 bg-gradient-to-r ${notification.gradient} rounded-full blur-sm opacity-75 group-hover:opacity-100 transition duration-200`}></div>
-                    <div className="relative flex items-center gap-2 bg-white dark:bg-gray-900 px-4 py-2 rounded-full border shadow-lg">
+                    <div className="relative flex items-center gap-2 bg-background px-4 py-2 rounded-full border shadow-lg">
                       <Icon className="h-4 w-4 text-yellow-500" />
                       <span className={`font-semibold text-sm bg-gradient-to-r ${notification.gradient} bg-clip-text text-transparent`}>
                         {notification.text}
@@ -268,10 +274,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-3xl mx-auto"
+              className="max-w-3xl mx-auto relative z-20"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance leading-tight">
-                Professional <span className="text-gradient">Invoices</span> Made Simple
+                Professional <span className={textGradientClass}>Invoices</span> Made Simple
               </h1>
               <p className="text-xl text-muted-foreground mb-8 text-balance">
                 Create beautiful, customizable invoices in seconds. Streamline your billing process and get paid faster.
@@ -309,21 +315,21 @@ const Index = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mt-16 relative"
             >
-              <div className="relative rounded-xl shadow-2xl overflow-hidden border bg-white">
+              <div className="relative rounded-xl shadow-2xl overflow-hidden border bg-card">
                 <img 
                   src="/banner.svg" 
                   alt="ProInvoice Banner" 
-                  className="w-full h-auto"
+                  className="w-full h-auto dark:opacity-90"
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent dark:from-black/30"></div>
                 
                 {/* Glass effect reflection */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50 dark:from-white/10"></div>
               </div>
               
               {/* Background glow effect */}
-              <div className="absolute -inset-x-20 -inset-y-10 bg-primary/5 blur-3xl rounded-[40px] -z-10"></div>
+              <div className="absolute -inset-x-20 -inset-y-10 bg-primary/5 dark:bg-primary/10 blur-3xl rounded-[40px] -z-10"></div>
             </motion.div>
           </div>
         </section>
