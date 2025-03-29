@@ -18,6 +18,8 @@ const Templates = lazy(() => import("./pages/Templates"));
 const Clients = lazy(() => import("./pages/Clients"));
 const Settings = lazy(() => import("./pages/Settings"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Terms = lazy(() => import("./pages/Terms"));
+const Privacy = lazy(() => import("./pages/Privacy"));
 
 // Loading component
 const Loading = () => (
@@ -51,6 +53,8 @@ function App() {
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
                 <Route
                   path="/dashboard"
                   element={
