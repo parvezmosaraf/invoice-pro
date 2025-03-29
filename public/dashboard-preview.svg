@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#F8FAFC"/>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="250" height="800" fill="#FFFFFF"/>
+  <rect x="249" y="0" width="1" height="800" fill="#E2E8F0"/>
+  
+  <!-- Logo Area -->
+  <rect x="32" y="32" width="186" height="40" rx="8" fill="#3B82F6" opacity="0.1"/>
+  <circle cx="52" cy="52" r="12" fill="#3B82F6"/>
+  <rect x="72" y="43" width="120" height="18" rx="4" fill="#3B82F6"/>
+  
+  <!-- Navigation Items -->
+  <rect x="32" y="104" width="186" height="40" rx="8" fill="#3B82F6" opacity="0.1"/>
+  <rect x="32" y="152" width="186" height="40" rx="8" fill="#F1F5F9"/>
+  <rect x="32" y="200" width="186" height="40" rx="8" fill="#F1F5F9"/>
+  <rect x="32" y="248" width="186" height="40" rx="8" fill="#F1F5F9"/>
+  
+  <!-- Main Content Area -->
+  <!-- Header -->
+  <rect x="282" y="32" width="886" height="64" rx="8" fill="#FFFFFF"/>
+  <rect x="282" y="31" width="886" height="1" fill="#E2E8F0"/>
+  
+  <!-- Stats Cards -->
+  <rect x="282" y="128" width="200" height="120" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <rect x="510" y="128" width="200" height="120" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <rect x="738" y="128" width="200" height="120" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <rect x="966" y="128" width="200" height="120" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+  
+  <!-- Recent Invoices Table -->
+  <rect x="282" y="280" width="886" height="400" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <rect x="282" y="280" width="886" height="48" rx="8" fill="#F8FAFC"/>
+  
+  <!-- Table Headers -->
+  <rect x="314" y="296" width="100" height="16" rx="4" fill="#64748B" opacity="0.2"/>
+  <rect x="442" y="296" width="100" height="16" rx="4" fill="#64748B" opacity="0.2"/>
+  <rect x="570" y="296" width="100" height="16" rx="4" fill="#64748B" opacity="0.2"/>
+  <rect x="698" y="296" width="100" height="16" rx="4" fill="#64748B" opacity="0.2"/>
+  
+  <!-- Table Rows -->
+  <rect x="314" y="360" width="822" height="1" fill="#E2E8F0"/>
+  <rect x="314" y="420" width="822" height="1" fill="#E2E8F0"/>
+  <rect x="314" y="480" width="822" height="1" fill="#E2E8F0"/>
+  <rect x="314" y="540" width="822" height="1" fill="#E2E8F0"/>
+  <rect x="314" y="600" width="822" height="1" fill="#E2E8F0"/>
+  
+  <!-- Stats Numbers -->
+  <text x="314" y="188" font-family="Inter" font-size="24" font-weight="600" fill="#0F172A">$24,500</text>
+  <text x="542" y="188" font-family="Inter" font-size="24" font-weight="600" fill="#0F172A">85</text>
+  <text x="770" y="188" font-family="Inter" font-size="24" font-weight="600" fill="#0F172A">12</text>
+  <text x="998" y="188" font-family="Inter" font-size="24" font-weight="600" fill="#0F172A">$8,900</text>
+  
+  <!-- Stats Labels -->
+  <text x="314" y="208" font-family="Inter" font-size="14" fill="#64748B">Total Revenue</text>
+  <text x="542" y="208" font-family="Inter" font-size="14" fill="#64748B">Total Invoices</text>
+  <text x="770" y="208" font-family="Inter" font-size="14" fill="#64748B">Active Clients</text>
+  <text x="998" y="208" font-family="Inter" font-size="14" fill="#64748B">Pending Amount</text>
+</svg> 
