@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="1000" fill="#FFFFFF"/>
+  
+  <!-- Header Banner -->
+  <rect x="0" y="0" width="800" height="200" fill="#3B82F6"/>
+  
+  <!-- Company Logo Area -->
+  <circle cx="80" cy="100" r="40" fill="#FFFFFF" opacity="0.9"/>
+  <text x="140" y="110" font-family="Inter" font-size="24" font-weight="700" fill="#FFFFFF">Your Company</text>
+  
+  <!-- Invoice Title -->
+  <text x="720" y="80" font-family="Inter" font-size="48" font-weight="700" fill="#FFFFFF" text-anchor="end">INVOICE</text>
+  <text x="720" y="110" font-family="Inter" font-size="18" fill="#FFFFFF" text-anchor="end">#INV-001</text>
+  
+  <!-- Client Info Box -->
+  <rect x="60" y="240" width="300" height="160" rx="8" fill="#F8FAFC"/>
+  <text x="80" y="270" font-family="Inter" font-size="16" font-weight="600" fill="#0F172A">Bill To:</text>
+  <text x="80" y="300" font-family="Inter" font-size="16" fill="#0F172A">Client Name</text>
+  <text x="80" y="320" font-family="Inter" font-size="14" fill="#64748B">Client Company</text>
+  <text x="80" y="340" font-family="Inter" font-size="14" fill="#64748B">Client Address</text>
+  <text x="80" y="360" font-family="Inter" font-size="14" fill="#64748B">City, Country 12345</text>
+  
+  <!-- Date Info Box -->
+  <rect x="440" y="240" width="300" height="160" rx="8" fill="#F8FAFC"/>
+  <text x="460" y="270" font-family="Inter" font-size="14" fill="#64748B">Issue Date:</text>
+  <text x="460" y="290" font-family="Inter" font-size="16" fill="#0F172A">January 1, 2024</text>
+  <text x="460" y="320" font-family="Inter" font-size="14" fill="#64748B">Due Date:</text>
+  <text x="460" y="340" font-family="Inter" font-size="16" fill="#0F172A">January 31, 2024</text>
+  
+  <!-- Table -->
+  <rect x="60" y="440" width="680" height="50" rx="8" fill="#F1F5F9"/>
+  <text x="80" y="470" font-family="Inter" font-size="14" font-weight="600" fill="#0F172A">Description</text>
+  <text x="480" y="470" font-family="Inter" font-size="14" font-weight="600" fill="#0F172A">Quantity</text>
+  <text x="560" y="470" font-family="Inter" font-size="14" font-weight="600" fill="#0F172A">Price</text>
+  <text x="720" y="470" font-family="Inter" font-size="14" font-weight="600" fill="#0F172A" text-anchor="end">Total</text>
+  
+  <!-- Table Rows with alternating backgrounds -->
+  <rect x="60" y="490" width="680" height="50" fill="#FFFFFF"/>
+  <text x="80" y="520" font-family="Inter" font-size="14" fill="#0F172A">Website Design</text>
+  <text x="480" y="520" font-family="Inter" font-size="14" fill="#0F172A">1</text>
+  <text x="560" y="520" font-family="Inter" font-size="14" fill="#0F172A">$1,200.00</text>
+  <text x="720" y="520" font-family="Inter" font-size="14" fill="#0F172A" text-anchor="end">$1,200.00</text>
+  
+  <rect x="60" y="540" width="680" height="50" fill="#F8FAFC"/>
+  <text x="80" y="570" font-family="Inter" font-size="14" fill="#0F172A">Logo Design</text>
+  <text x="480" y="570" font-family="Inter" font-size="14" fill="#0F172A">1</text>
+  <text x="560" y="570" font-family="Inter" font-size="14" fill="#0F172A">$600.00</text>
+  <text x="720" y="570" font-family="Inter" font-size="14" fill="#0F172A" text-anchor="end">$600.00</text>
+  
+  <rect x="60" y="590" width="680" height="50" fill="#FFFFFF"/>
+  <text x="80" y="620" font-family="Inter" font-size="14" fill="#0F172A">Content Writing</text>
+  <text x="480" y="620" font-family="Inter" font-size="14" fill="#0F172A">2</text>
+  <text x="560" y="620" font-family="Inter" font-size="14" fill="#0F172A">$300.00</text>
+  <text x="720" y="620" font-family="Inter" font-size="14" fill="#0F172A" text-anchor="end">$600.00</text>
+  
+  <!-- Total Box -->
+  <rect x="440" y="680" width="300" height="160" rx="8" fill="#F8FAFC"/>
+  <text x="460" y="720" font-family="Inter" font-size="14" fill="#64748B">Subtotal:</text>
+  <text x="720" y="720" font-family="Inter" font-size="14" fill="#0F172A" text-anchor="end">$2,400.00</text>
+  
+  <text x="460" y="750" font-family="Inter" font-size="14" fill="#64748B">Tax (10%):</text>
+  <text x="720" y="750" font-family="Inter" font-size="14" fill="#0F172A" text-anchor="end">$240.00</text>
+  
+  <rect x="460" y="780" width="260" height="40" rx="4" fill="#3B82F6"/>
+  <text x="480" y="805" font-family="Inter" font-size="16" font-weight="600" fill="#FFFFFF">Total:</text>
+  <text x="700" y="805" font-family="Inter" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="end">$2,640.00</text>
+  
+  <!-- Footer -->
+  <text x="80" y="900" font-family="Inter" font-size="14" font-weight="600" fill="#0F172A">Notes:</text>
+  <text x="80" y="930" font-family="Inter" font-size="14" fill="#64748B">Thank you for your business!</text>
+  <text x="80" y="950" font-family="Inter" font-size="14" fill="#64748B">Payment is due within 30 days.</text>
+</svg> 

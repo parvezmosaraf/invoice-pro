@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Background -->
+  <rect width="800" height="600" fill="url(#bg-gradient)"/>
+  
+  <!-- Modern Header -->
+  <text x="40" y="80" fill="white" font-family="Arial" font-size="48" font-weight="bold"
+        style="filter: url(#shadow)">Invoice</text>
+  <text x="40" y="110" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="16">#INV-2024-0001</text>
+  
+  <!-- Amount Box -->
+  <rect x="560" y="40" width="200" height="80" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="580" y="65" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="14">Amount Due</text>
+  <text x="580" y="95" fill="white" font-family="Arial" font-size="24" font-weight="bold">$2,450.00</text>
+  
+  <!-- Info Cards -->
+  <rect x="40" y="160" width="320" height="120" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="60" y="190" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="12">FROM</text>
+  <text x="60" y="220" fill="white" font-family="Arial" font-size="16">Your Company Name</text>
+  <text x="60" y="245" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="14">123 Business Street</text>
+  
+  <rect x="440" y="160" width="320" height="120" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="460" y="190" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="12">BILL TO</text>
+  <text x="460" y="220" fill="white" font-family="Arial" font-size="16">Client Name</text>
+  <text x="460" y="245" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="14">456 Client Avenue</text>
+  
+  <!-- Table -->
+  <rect x="40" y="320" width="720" height="40" rx="8" fill="rgba(255,255,255,0.1)"/>
+  <text x="60" y="345" fill="white" font-family="Arial" font-size="14">Description</text>
+  <text x="460" y="345" fill="white" font-family="Arial" font-size="14" text-anchor="end">Quantity</text>
+  <text x="560" y="345" fill="white" font-family="Arial" font-size="14" text-anchor="end">Price</text>
+  <text x="740" y="345" fill="white" font-family="Arial" font-size="14" text-anchor="end">Total</text>
+  
+  <!-- Modern Footer -->
+  <text x="400" y="540" fill="rgba(255,255,255,0.7)" font-family="Arial" font-size="14" text-anchor="middle">
+    Thank you for your business
+  </text>
+  
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0" y1="0" x2="800" y2="600">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+</svg> 

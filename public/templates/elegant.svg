@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with pattern -->
+  <defs>
+    <pattern id="diagonalPattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" stroke="#F8FAFC" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="goldGradient" x1="0" y1="0" x2="800" y2="0">
+      <stop offset="0%" style="stop-color:#B8860B"/>
+      <stop offset="50%" style="stop-color:#DAA520"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="1000" fill="#FFFFFF"/>
+  <rect width="800" height="1000" fill="url(#diagonalPattern)" opacity="0.1"/>
+  
+  <!-- Decorative Border -->
+  <rect x="20" y="20" width="760" height="960" stroke="url(#goldGradient)" stroke-width="2" fill="none"/>
+  
+  <!-- Header -->
+  <path d="M60 40 L740 40 L740 180 L60 180 Z" fill="#1A1A1A"/>
+  <rect x="60" y="180" width="680" height="4" fill="url(#goldGradient)"/>
+  
+  <!-- Company Logo Area -->
+  <text x="80" y="100" font-family="Inter" font-size="32" font-weight="200" fill="#FFFFFF">YOUR COMPANY</text>
+  <text x="80" y="130" font-family="Inter" font-size="14" fill="#DAA520" letter-spacing="0.3em">ESTABLISHED 2024</text>
+  
+  <!-- Invoice Title -->
+  <text x="720" y="100" font-family="Inter" font-size="48" font-weight="200" fill="#FFFFFF" text-anchor="end">INVOICE</text>
+  <text x="720" y="130" font-family="Inter" font-size="16" fill="#DAA520" text-anchor="end" letter-spacing="0.2em">NO. INV-001</text>
+  
+  <!-- Client Info Box -->
+  <rect x="60" y="220" width="320" height="200" fill="#FFFFFF" stroke="#DAA520" stroke-width="1"/>
+  <text x="80" y="260" font-family="Inter" font-size="14" fill="#666666" letter-spacing="0.2em">BILL TO</text>
+  <text x="80" y="290" font-family="Inter" font-size="18" fill="#1A1A1A">Client Name</text>
+  <text x="80" y="320" font-family="Inter" font-size="14" fill="#666666">Client Company</text>
+  <text x="80" y="340" font-family="Inter" font-size="14" fill="#666666">Client Address</text>
+  <text x="80" y="360" font-family="Inter" font-size="14" fill="#666666">City, Country 12345</text>
+  
+  <!-- Date Info Box -->
+  <rect x="420" y="220" width="320" height="200" fill="#FFFFFF" stroke="#DAA520" stroke-width="1"/>
+  <text x="440" y="260" font-family="Inter" font-size="14" fill="#666666" letter-spacing="0.2em">DETAILS</text>
+  <text x="440" y="290" font-family="Inter" font-size="14" fill="#666666">Issue Date:</text>
+  <text x="720" y="290" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">January 1, 2024</text>
+  <text x="440" y="320" font-family="Inter" font-size="14" fill="#666666">Due Date:</text>
+  <text x="720" y="320" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">January 31, 2024</text>
+  
+  <!-- Table Header -->
+  <rect x="60" y="460" width="680" height="60" fill="#1A1A1A"/>
+  <text x="80" y="495" font-family="Inter" font-size="12" fill="#FFFFFF" letter-spacing="0.2em">SERVICE</text>
+  <text x="480" y="495" font-family="Inter" font-size="12" fill="#FFFFFF" letter-spacing="0.2em">HOURS</text>
+  <text x="580" y="495" font-family="Inter" font-size="12" fill="#FFFFFF" letter-spacing="0.2em">RATE</text>
+  <text x="720" y="495" font-family="Inter" font-size="12" fill="#FFFFFF" letter-spacing="0.2em" text-anchor="end">AMOUNT</text>
+  
+  <!-- Table Rows -->
+  <rect x="60" y="520" width="680" height="50" fill="#FFFFFF" stroke="#DAA520" stroke-width="1"/>
+  <text x="80" y="550" font-family="Inter" font-size="14" fill="#1A1A1A">Luxury Brand Design</text>
+  <text x="480" y="550" font-family="Inter" font-size="14" fill="#1A1A1A">24</text>
+  <text x="580" y="550" font-family="Inter" font-size="14" fill="#1A1A1A">$250.00</text>
+  <text x="720" y="550" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$6,000.00</text>
+  
+  <rect x="60" y="570" width="680" height="50" fill="#FFFFFF" stroke="#DAA520" stroke-width="1"/>
+  <text x="80" y="600" font-family="Inter" font-size="14" fill="#1A1A1A">Premium Packaging</text>
+  <text x="480" y="600" font-family="Inter" font-size="14" fill="#1A1A1A">40</text>
+  <text x="580" y="600" font-family="Inter" font-size="14" fill="#1A1A1A">$200.00</text>
+  <text x="720" y="600" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$8,000.00</text>
+  
+  <rect x="60" y="620" width="680" height="50" fill="#FFFFFF" stroke="#DAA520" stroke-width="1"/>
+  <text x="80" y="650" font-family="Inter" font-size="14" fill="#1A1A1A">VIP Consultation</text>
+  <text x="480" y="650" font-family="Inter" font-size="14" fill="#1A1A1A">8</text>
+  <text x="580" y="650" font-family="Inter" font-size="14" fill="#1A1A1A">$500.00</text>
+  <text x="720" y="650" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$4,000.00</text>
+  
+  <!-- Total Box -->
+  <rect x="420" y="700" width="320" height="200" fill="#1A1A1A"/>
+  <text x="440" y="740" font-family="Inter" font-size="14" fill="#FFFFFF">Subtotal:</text>
+  <text x="720" y="740" font-family="Inter" font-size="14" fill="#FFFFFF" text-anchor="end">$18,000.00</text>
+  
+  <text x="440" y="780" font-family="Inter" font-size="14" fill="#FFFFFF">Tax (10%):</text>
+  <text x="720" y="780" font-family="Inter" font-size="14" fill="#FFFFFF" text-anchor="end">$1,800.00</text>
+  
+  <line x1="440" y1="810" x2="720" y2="810" stroke="#DAA520" stroke-width="2"/>
+  
+  <text x="440" y="850" font-family="Inter" font-size="18" font-weight="200" fill="#DAA520">TOTAL</text>
+  <text x="720" y="850" font-family="Inter" font-size="18" font-weight="200" fill="#DAA520" text-anchor="end">$19,800.00</text>
+  
+  <!-- Notes -->
+  <text x="80" y="900" font-family="Inter" font-size="14" fill="#1A1A1A" letter-spacing="0.2em">NOTES</text>
+  <text x="80" y="930" font-family="Inter" font-size="14" fill="#666666">Thank you for choosing our premium services.</text>
+  <text x="80" y="950" font-family="Inter" font-size="14" fill="#666666">We appreciate your business.</text>
+</svg> 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0" y1="0" x2="800" y2="0">
+      <stop offset="0%" style="stop-color:#FF6B6B"/>
+      <stop offset="100%" style="stop-color:#4ECDC4"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" style="stop-color:#FF6B6B"/>
+      <stop offset="100%" style="stop-color:#FFE66D"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="1000" fill="#FFFFFF"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="700" cy="100" r="180" fill="url(#headerGradient)" opacity="0.1"/>
+  <circle cx="100" cy="150" r="120" fill="#4ECDC4" opacity="0.1"/>
+  
+  <!-- Header -->
+  <path d="M0 0 L800 0 L800 250 Q400 200 0 250 Z" fill="url(#headerGradient)"/>
+  
+  <!-- Company Logo Area -->
+  <circle cx="100" cy="100" r="50" fill="#FFFFFF"/>
+  <text x="170" y="115" font-family="Inter" font-size="28" font-weight="700" fill="#FFFFFF">Your Company</text>
+  
+  <!-- Invoice Title -->
+  <text x="700" y="100" font-family="Inter" font-size="64" font-weight="800" fill="#FFFFFF" text-anchor="end">INVOICE</text>
+  <text x="700" y="130" font-family="Inter" font-size="20" fill="#FFFFFF" text-anchor="end">#INV-001</text>
+  
+  <!-- Client Info Box -->
+  <rect x="60" y="280" width="320" height="180" rx="16" fill="#FFFFFF" stroke="#4ECDC4" stroke-width="2"/>
+  <text x="80" y="320" font-family="Inter" font-size="18" font-weight="600" fill="#FF6B6B">Bill To:</text>
+  <text x="80" y="350" font-family="Inter" font-size="16" fill="#1A1A1A">Client Name</text>
+  <text x="80" y="375" font-family="Inter" font-size="14" fill="#666666">Client Company</text>
+  <text x="80" y="400" font-family="Inter" font-size="14" fill="#666666">Client Address</text>
+  <text x="80" y="425" font-family="Inter" font-size="14" fill="#666666">City, Country 12345</text>
+  
+  <!-- Date Info Box -->
+  <rect x="420" y="280" width="320" height="180" rx="16" fill="#FFFFFF" stroke="#4ECDC4" stroke-width="2"/>
+  <text x="440" y="320" font-family="Inter" font-size="14" fill="#666666">Issue Date:</text>
+  <text x="440" y="345" font-family="Inter" font-size="16" fill="#1A1A1A">January 1, 2024</text>
+  <text x="440" y="380" font-family="Inter" font-size="14" fill="#666666">Due Date:</text>
+  <text x="440" y="405" font-family="Inter" font-size="16" fill="#1A1A1A">January 31, 2024</text>
+  
+  <!-- Table Header -->
+  <rect x="60" y="500" width="680" height="60" rx="12" fill="#4ECDC4" opacity="0.1"/>
+  <text x="80" y="535" font-family="Inter" font-size="14" font-weight="600" fill="#1A1A1A">Description</text>
+  <text x="480" y="535" font-family="Inter" font-size="14" font-weight="600" fill="#1A1A1A">Quantity</text>
+  <text x="580" y="535" font-family="Inter" font-size="14" font-weight="600" fill="#1A1A1A">Price</text>
+  <text x="720" y="535" font-family="Inter" font-size="14" font-weight="600" fill="#1A1A1A" text-anchor="end">Total</text>
+  
+  <!-- Table Rows -->
+  <rect x="60" y="560" width="680" height="50" fill="#FFFFFF" stroke="#4ECDC4" stroke-width="1"/>
+  <text x="80" y="590" font-family="Inter" font-size="14" fill="#1A1A1A">Brand Identity Design</text>
+  <text x="480" y="590" font-family="Inter" font-size="14" fill="#1A1A1A">1</text>
+  <text x="580" y="590" font-family="Inter" font-size="14" fill="#1A1A1A">$2,400.00</text>
+  <text x="720" y="590" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$2,400.00</text>
+  
+  <rect x="60" y="610" width="680" height="50" fill="#FFFFFF" stroke="#4ECDC4" stroke-width="1"/>
+  <text x="80" y="640" font-family="Inter" font-size="14" fill="#1A1A1A">Website Redesign</text>
+  <text x="480" y="640" font-family="Inter" font-size="14" fill="#1A1A1A">1</text>
+  <text x="580" y="640" font-family="Inter" font-size="14" fill="#1A1A1A">$3,600.00</text>
+  <text x="720" y="640" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$3,600.00</text>
+  
+  <rect x="60" y="660" width="680" height="50" fill="#FFFFFF" stroke="#4ECDC4" stroke-width="1"/>
+  <text x="80" y="690" font-family="Inter" font-size="14" fill="#1A1A1A">Social Media Kit</text>
+  <text x="480" y="690" font-family="Inter" font-size="14" fill="#1A1A1A">1</text>
+  <text x="580" y="690" font-family="Inter" font-size="14" fill="#1A1A1A">$1,800.00</text>
+  <text x="720" y="690" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$1,800.00</text>
+  
+  <!-- Total Box -->
+  <rect x="420" y="740" width="320" height="200" rx="16" fill="#FFFFFF" stroke="#4ECDC4" stroke-width="2"/>
+  <text x="440" y="780" font-family="Inter" font-size="14" fill="#666666">Subtotal:</text>
+  <text x="720" y="780" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$7,800.00</text>
+  
+  <text x="440" y="810" font-family="Inter" font-size="14" fill="#666666">Tax (10%):</text>
+  <text x="720" y="810" font-family="Inter" font-size="14" fill="#1A1A1A" text-anchor="end">$780.00</text>
+  
+  <rect x="440" y="840" width="280" height="70" rx="8" fill="url(#headerGradient)"/>
+  <text x="460" y="880" font-family="Inter" font-size="18" font-weight="600" fill="#FFFFFF">Total:</text>
+  <text x="700" y="880" font-family="Inter" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="end">$8,580.00</text>
+  
+  <!-- Notes -->
+  <text x="80" y="900" font-family="Inter" font-size="16" font-weight="600" fill="#FF6B6B">Notes:</text>
+  <text x="80" y="930" font-family="Inter" font-size="14" fill="#666666">Thank you for choosing our creative services!</text>
+  <text x="80" y="950" font-family="Inter" font-size="14" fill="#666666">Payment is due within 30 days.</text>
+  
+  <!-- Footer Decoration -->
+  <path d="M0 1000 L800 1000 L800 920 Q400 980 0 920 Z" fill="url(#headerGradient)" opacity="0.1"/>
+</svg> 

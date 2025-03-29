@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Aged Paper Background -->
+  <rect width="800" height="600" fill="#FFFBEB"/>
+  <rect width="800" height="600" fill="url(#grain)" opacity="0.1"/>
+  
+  <!-- Ornate Border -->
+  <rect x="20" y="20" width="760" height="560" stroke="#92400E" stroke-width="2"/>
+  <path d="M20 40 Q400 60 780 40" stroke="#92400E" stroke-width="1" fill="none"/>
+  <path d="M20 560 Q400 540 780 560" stroke="#92400E" stroke-width="1" fill="none"/>
+  
+  <!-- Vintage Header -->
+  <text x="400" y="80" fill="#92400E" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" 
+        style="font-variant: small-caps;">Invoice</text>
+  <text x="400" y="110" fill="#B45309" font-family="Arial" font-size="16" text-anchor="middle">#INV-2024-0001</text>
+  
+  <!-- Decorative Dividers -->
+  <path d="M300 120 L500 120" stroke="#92400E" stroke-width="1"/>
+  <path d="M320 123 L480 123" stroke="#92400E" stroke-width="0.5"/>
+  
+  <!-- Info Sections with Vintage Styling -->
+  <rect x="40" y="160" width="320" height="120" fill="#FEF3C7" stroke="#92400E" stroke-width="1"/>
+  <text x="60" y="190" fill="#92400E" font-family="Arial" font-size="12" style="font-variant: small-caps;">From</text>
+  <text x="60" y="220" fill="#92400E" font-family="Arial" font-size="16">Your Company Name</text>
+  <text x="60" y="245" fill="#B45309" font-family="Arial" font-size="14">123 Business Street</text>
+  
+  <rect x="440" y="160" width="320" height="120" fill="#FEF3C7" stroke="#92400E" stroke-width="1"/>
+  <text x="460" y="190" fill="#92400E" font-family="Arial" font-size="12" style="font-variant: small-caps;">Bill To</text>
+  <text x="460" y="220" fill="#92400E" font-family="Arial" font-size="16">Client Name</text>
+  <text x="460" y="245" fill="#B45309" font-family="Arial" font-size="14">456 Client Avenue</text>
+  
+  <!-- Table with Vintage Look -->
+  <rect x="40" y="320" width="720" height="40" fill="#FEF3C7" stroke="#92400E" stroke-width="1"/>
+  <text x="60" y="345" fill="#92400E" font-family="Arial" font-size="14">Description</text>
+  <text x="500" y="345" fill="#92400E" font-family="Arial" font-size="14" text-anchor="end">Quantity</text>
+  <text x="600" y="345" fill="#92400E" font-family="Arial" font-size="14" text-anchor="end">Price</text>
+  <text x="740" y="345" fill="#92400E" font-family="Arial" font-size="14" text-anchor="end">Total</text>
+  
+  <!-- Vintage Footer -->
+  <text x="400" y="540" fill="#92400E" font-family="Arial" font-size="14" text-anchor="middle" 
+        style="font-variant: small-caps;">Thank you for your business</text>
+  
+  <!-- Grain Pattern -->
+  <defs>
+    <pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#92400E" opacity="0.1"/>
+    </pattern>
+  </defs>
+</svg> 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Natural Background -->
+  <rect width="800" height="600" fill="#F0FDF4"/>
+  <path d="M0 0 C200 50 600 -30 800 20 V0 H0" fill="#DCFCE7" opacity="0.5"/>
+  <path d="M0 600 C200 550 600 630 800 580 V600 H0" fill="#DCFCE7" opacity="0.5"/>
+  
+  <!-- Leaf Decoration -->
+  <path d="M720 40 C760 40 760 80 720 80 C680 80 680 40 720 40" fill="#86EFAC" opacity="0.3"/>
+  
+  <!-- Header -->
+  <text x="40" y="80" fill="#166534" font-family="Arial" font-size="48" font-weight="300">Invoice</text>
+  <text x="40" y="110" fill="#15803D" font-family="Arial" font-size="16">#INV-2024-0001</text>
+  
+  <!-- Date Section -->
+  <text x="600" y="80" fill="#15803D" font-family="Arial" font-size="14">Issue Date: Jan 15, 2024</text>
+  <text x="600" y="100" fill="#15803D" font-family="Arial" font-size="14">Due Date: Feb 15, 2024</text>
+  
+  <!-- Info Sections with Natural Borders -->
+  <rect x="40" y="160" width="320" height="120" rx="12" fill="white" stroke="#86EFAC" stroke-width="2"/>
+  <text x="60" y="190" fill="#15803D" font-family="Arial" font-size="12">FROM</text>
+  <text x="60" y="220" fill="#166534" font-family="Arial" font-size="16">Your Company Name</text>
+  <text x="60" y="245" fill="#15803D" font-family="Arial" font-size="14">123 Business Street</text>
+  
+  <rect x="400" y="160" width="320" height="120" rx="12" fill="white" stroke="#86EFAC" stroke-width="2"/>
+  <text x="420" y="190" fill="#15803D" font-family="Arial" font-size="12">BILL TO</text>
+  <text x="420" y="220" fill="#166534" font-family="Arial" font-size="16">Client Name</text>
+  <text x="420" y="245" fill="#15803D" font-family="Arial" font-size="14">456 Client Avenue</text>
+  
+  <!-- Table with Organic Styling -->
+  <rect x="40" y="320" width="720" height="40" rx="8" fill="#DCFCE7"/>
+  <text x="60" y="345" fill="#166534" font-family="Arial" font-size="14">Description</text>
+  <text x="500" y="345" fill="#166534" font-family="Arial" font-size="14" text-anchor="end">Quantity</text>
+  <text x="600" y="345" fill="#166534" font-family="Arial" font-size="14" text-anchor="end">Price</text>
+  <text x="740" y="345" fill="#166534" font-family="Arial" font-size="14" text-anchor="end">Total</text>
+  
+  <!-- Footer with Leaf Decoration -->
+  <path d="M380 540 C400 540 400 560 380 560 C360 560 360 540 380 540" fill="#86EFAC" opacity="0.3"/>
+  <text x="400" y="570" fill="#15803D" font-family="Arial" font-size="14" text-anchor="middle">Thank you for choosing eco-friendly billing</text>
+</svg> 
