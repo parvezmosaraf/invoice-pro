@@ -10,12 +10,15 @@ interface TemplateSelectorProps {
 }
 
 const templates = [
-  { id: "classic", name: "Classic" },
-  { id: "modern", name: "Modern" },
-  { id: "creative", name: "Creative" },
-  { id: "corporate", name: "Corporate" },
-  { id: "minimalist", name: "Minimalist" },
-  { id: "elegant", name: "Elegant" },
+  { id: "classic", name: "Classic", description: "A clean, professional design suitable for any business" },
+  { id: "modern", name: "Modern", description: "Contemporary design with a minimal aesthetic" },
+  { id: "creative", name: "Creative", description: "Bold design perfect for creative professionals" },
+  { id: "corporate", name: "Corporate", description: "Professional template for corporate businesses" },
+  { id: "minimalist", name: "Minimalist", description: "Clean and simple design focusing on essentials" },
+  { id: "elegant", name: "Elegant", description: "Sophisticated design with elegant typography" },
+  { id: "premium", name: "Premium Dark", description: "Modern dark theme with gradient accents" },
+  { id: "minimalistPro", name: "Minimalist Pro", description: "Enhanced minimalist design with modern touches" },
+  { id: "businessPro", name: "Business Pro", description: "Professional template with advanced layout" },
 ];
 
 export default function TemplateSelector({ selectedTemplate, onTemplateChange, previewData }: TemplateSelectorProps) {
@@ -30,8 +33,9 @@ export default function TemplateSelector({ selectedTemplate, onTemplateChange, p
           </SelectTrigger>
           <SelectContent>
             {templates.map((template) => (
-              <SelectItem key={template.id} value={template.id}>
-                {template.name}
+              <SelectItem key={template.id} value={template.id} className="flex flex-col py-3">
+                <span className="font-medium">{template.name}</span>
+                <span className="text-xs text-gray-500 mt-1">{template.description}</span>
               </SelectItem>
             ))}
           </SelectContent>
