@@ -22,6 +22,7 @@ import { getTemplateComponent } from "@/components/invoice/InvoiceTemplates";
 import ReactDOM from "react-dom/client";
 import { ShareInvoiceDialog } from "@/components/invoice/ShareInvoiceDialog";
 import { ShareService } from "@/services/ShareService";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const invoiceSchema = z.object({
   clientId: z.string().min(1, { message: "Client is required" }),
@@ -68,6 +69,7 @@ export default function Invoice() {
   const location = useLocation();
   const [shareDialogOpen, setShareDialogOpen] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState<any>(null);
+  const [isClientDialogOpen, setIsClientDialogOpen] = useState(false);
   
   // Handle template selection from Templates page
   useEffect(() => {
@@ -179,10 +181,23 @@ export default function Invoice() {
     setActiveTab("create");
   };
   
+  const handleAddClientClick = () => {
+    setIsClientDialogOpen(true);
+  };
+
+  const handleClientDialogClose = () => {
+    setIsClientDialogOpen(false);
+  };
+
   const handleAddClient = (clientData: Omit<Client, 'id'>) => {
     const newClient = ClientService.add(clientData);
     setClients([...clients, newClient]);
     form.setValue("clientId", newClient.id);
+    setIsClientDialogOpen(false);
+    toast({
+      title: "Success",
+      description: "Client added successfully",
+    });
   };
   
   const handleGeneratePdf = async () => {
@@ -460,20 +475,33 @@ export default function Invoice() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>Client</FormLabel>
-                              <Select onValueChange={field.onChange} value={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Select a client" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  {clients.map((client) => (
-                                    <SelectItem key={client.id} value={client.id}>
-                                      {client.name}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
+                              <div className="flex gap-2">
+                                <div className="flex-1">
+                                  <Select onValueChange={field.onChange} value={field.value}>
+                                    <FormControl>
+                                      <SelectTrigger>
+                                        <SelectValue placeholder="Select a client" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      {clients.map((client) => (
+                                        <SelectItem key={client.id} value={client.id}>
+                                          {client.name}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                </div>
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  onClick={handleAddClientClick}
+                                  className="flex-shrink-0"
+                                >
+                                  <UserPlus className="h-4 w-4 mr-2" />
+                                  Add Client
+                                </Button>
+                              </div>
                               <FormMessage />
                             </FormItem>
                           )}
@@ -759,12 +787,21 @@ export default function Invoice() {
         </TabsContent>
       </Tabs>
       
-      {/* Client Form Dialog */}
-      <ClientForm 
-        open={isAddingClient}
-        onOpenChange={setIsAddingClient}
-        onClientAdded={handleAddClient}
-      />
+      {/* Add Client Dialog */}
+      <Dialog open={isClientDialogOpen} onOpenChange={setIsClientDialogOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center">
+              <UserPlus className="mr-2 h-5 w-5 text-primary" />
+              Add New Client
+            </DialogTitle>
+            <DialogDescription>
+              Fill in the client details below to add them to your client list.
+            </DialogDescription>
+          </DialogHeader>
+          <ClientForm onSubmit={handleAddClient} onCancel={handleClientDialogClose} />
+        </DialogContent>
+      </Dialog>
 
       <ShareInvoiceDialog
         open={shareDialogOpen}
