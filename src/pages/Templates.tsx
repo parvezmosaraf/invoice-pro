@@ -169,7 +169,7 @@ export default function Templates() {
 
   const handleUseTemplate = (template: typeof templates[0]) => {
     // Navigate to invoice creation with template parameter
-    navigate(`/invoice?template=${encodeURIComponent(template.name)}`);
+    navigate(`/invoice?template=${template.name.toLowerCase().replace(/\s+/g, '')}`);
     
     toast({
       title: "Template Selected",

@@ -684,20 +684,8 @@ export default function Invoice() {
                           </div>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row justify-end gap-4 pt-6">
-                          <Button 
-                            type="button" 
-                            variant="outline" 
-                            onClick={handleGeneratePdf}
-                            className="w-full sm:w-auto"
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            Download PDF
-                          </Button>
-                          <Button 
-                            type="submit"
-                            className="w-full sm:w-auto"
-                          >
+                        <div className="flex justify-end gap-4 mt-6">
+                          <Button type="submit" className="bg-primary">
                             <Send className="h-4 w-4 mr-2" />
                             Create Invoice
                           </Button>

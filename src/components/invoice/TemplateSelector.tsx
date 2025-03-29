@@ -17,8 +17,8 @@ const templates = [
   { id: "minimalist", name: "Minimalist" },
   { id: "elegant", name: "Elegant" },
   { id: "premium", name: "Premium Dark" },
-  { id: "minimalistPro", name: "Minimalist Pro" },
-  { id: "businessPro", name: "Business Pro" },
+  { id: "minimalistpro", name: "Minimalist Pro" },
+  { id: "businesspro", name: "Business Pro" },
   { id: "boutique", name: "Boutique" },
   { id: "tech", name: "Tech" },
   { id: "nature", name: "Nature" },
@@ -27,8 +27,7 @@ const templates = [
   { id: "luxury", name: "Luxury" },
   { id: "gradient", name: "Gradient" },
   { id: "clean", name: "Clean" },
-  { id: "professional", name: "Professional" },
-  { id: "dynamic", name: "Dynamic" }
+  { id: "professional", name: "Professional" }
 ];
 
 export default function TemplateSelector({ selectedTemplate, onTemplateChange, previewData }: TemplateSelectorProps) {

@@ -1418,6 +1418,9 @@ export function getTemplateComponent(template: string) {
     corporate: CorporateTemplate,
     minimalist: MinimalistTemplate,
     elegant: ElegantTemplate,
+    premium: PremiumTemplate,
+    minimalistpro: MinimalistProTemplate,
+    businesspro: BusinessProTemplate,
     boutique: BoutiqueTemplate,
     tech: TechTemplate,
     nature: NatureTemplate,
@@ -1429,5 +1432,6 @@ export function getTemplateComponent(template: string) {
     professional: ProfessionalTemplate,
   };
 
-  return templates[template.toLowerCase()] || ClassicTemplate;
+  const templateKey = template.toLowerCase();
+  return templates[templateKey] || ClassicTemplate;
 } 
