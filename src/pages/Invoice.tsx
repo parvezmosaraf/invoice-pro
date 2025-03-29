@@ -31,6 +31,7 @@ const invoiceSchema = z.object({
   dueDate: z.string(),
   currency: z.string(),
   notes: z.string().optional(),
+  taxRate: z.number().min(0).max(100).default(0),
   company: z.object({
     name: z.string().min(1, { message: "Company name is required" }),
     address: z.string().min(1, { message: "Company address is required" }),
@@ -101,6 +102,7 @@ export default function Invoice() {
       dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
       currency: "USD",
       notes: "",
+      taxRate: 0,
       company: {
         name: "",
         address: "",
@@ -135,6 +137,18 @@ export default function Invoice() {
     }, 0);
   };
   
+  const calculateTax = () => {
+    const subtotal = calculateSubtotal();
+    const taxRate = form.getValues('taxRate') || 0;
+    return (subtotal * taxRate) / 100;
+  };
+  
+  const calculateTotal = () => {
+    const subtotal = calculateSubtotal();
+    const tax = calculateTax();
+    return subtotal + tax;
+  };
+  
   const onSubmit = (data: InvoiceValues) => {
     const client = ClientService.getById(data.clientId);
     if (!client) {
@@ -151,6 +165,10 @@ export default function Invoice() {
       ...item,
       price: typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price
     }));
+
+    const subtotal = calculateSubtotal();
+    const tax = calculateTax();
+    const total = calculateTotal();
     
     // Create the invoice object with a generated invoice number
     const newInvoice = {
@@ -165,6 +183,10 @@ export default function Invoice() {
       company: data.company,
       items: submissionItems,
       status: 'pending' as const,
+      subtotal,
+      taxRate: data.taxRate,
+      tax,
+      total
     };
     
     try {
@@ -346,6 +368,10 @@ export default function Invoice() {
       price: typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price
     }));
 
+    const subtotal = calculateSubtotal();
+    const tax = calculateTax();
+    const total = calculateTotal();
+
     return {
       id: "preview",
       invoiceNumber: "INV-2024-0000",
@@ -358,6 +384,10 @@ export default function Invoice() {
       company: formData.company,
       items: previewItems,
       status: "draft" as const,
+      subtotal,
+      taxRate: formData.taxRate,
+      tax,
+      total
     };
   };
 
@@ -572,7 +602,7 @@ export default function Invoice() {
                               render={({ field }) => (
                                 <FormItem>
                                   <FormLabel>Currency</FormLabel>
-                                  <Select onValueChange={field.onChange} value={field.value}>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                                     <FormControl>
                                       <SelectTrigger>
                                         <SelectValue placeholder="Select currency" />
@@ -586,6 +616,28 @@ export default function Invoice() {
                                       ))}
                                     </SelectContent>
                                   </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <FormField
+                              control={form.control}
+                              name="taxRate"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Tax Rate (%)</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="number"
+                                      min="0"
+                                      max="100"
+                                      step="0.1"
+                                      placeholder="Enter tax rate"
+                                      {...field}
+                                      onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                    />
+                                  </FormControl>
                                   <FormMessage />
                                 </FormItem>
                               )}

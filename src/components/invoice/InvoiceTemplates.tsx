@@ -5,7 +5,27 @@ interface InvoiceTemplateProps {
   data: InvoiceData;
 }
 
+const calculateInvoiceTotals = (data: InvoiceData) => {
+  const calculateItemTotal = (item: any) => {
+    return item.quantity * (typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price);
+  };
+
+  const subtotal = data.items.reduce((sum, item) => sum + calculateItemTotal(item), 0);
+  const tax = (subtotal * (data.taxRate || 0)) / 100;
+  const total = subtotal + tax;
+
+  return { subtotal, tax, total };
+};
+
 export const ClassicTemplate = ({ data }: InvoiceTemplateProps) => {
+  const calculateItemTotal = (item: any) => {
+    return item.quantity * (typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price);
+  };
+
+  const subtotal = data.items.reduce((sum, item) => sum + calculateItemTotal(item), 0);
+  const tax = (subtotal * (data.taxRate || 0)) / 100;
+  const total = subtotal + tax;
+
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-between mb-8">
@@ -55,15 +75,19 @@ export const ClassicTemplate = ({ data }: InvoiceTemplateProps) => {
         </tbody>
       </table>
 
-      <div className="flex justify-end mb-8">
-        <div className="w-1/3">
+      <div className="mt-8 flex justify-end">
+        <div className="w-80">
           <div className="flex justify-between py-2">
             <span className="text-gray-600">Subtotal</span>
-            <span className="text-gray-800">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium">{data.currency} {subtotal.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between py-2 border-t border-gray-200">
-            <span className="font-semibold">Total</span>
-            <span className="font-semibold">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          <div className="flex justify-between py-2 border-b border-gray-200">
+            <span className="text-gray-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="font-medium">{data.currency} {tax.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 text-lg font-bold">
+            <span>Total</span>
+            <span>{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -79,8 +103,16 @@ export const ClassicTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const ModernTemplate = ({ data }: InvoiceTemplateProps) => {
+  const calculateItemTotal = (item: any) => {
+    return item.quantity * (typeof item.price === 'string' ? parseFloat(item.price) || 0 : item.price);
+  };
+
+  const subtotal = data.items.reduce((sum, item) => sum + calculateItemTotal(item), 0);
+  const tax = (subtotal * (data.taxRate || 0)) / 100;
+  const total = subtotal + tax;
+
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg">
+    <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl">
       <div className="bg-primary text-white p-6 -mx-8 -mt-8 mb-8">
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-light">INVOICE</h1>
@@ -135,15 +167,19 @@ export const ModernTemplate = ({ data }: InvoiceTemplateProps) => {
         </tbody>
       </table>
 
-      <div className="flex justify-end mb-12">
-        <div className="w-1/3">
-          <div className="flex justify-between py-4 border-b border-gray-100">
+      <div className="mt-8 flex justify-end">
+        <div className="w-80 bg-white p-6 rounded-lg shadow-sm">
+          <div className="flex justify-between py-2">
             <span className="text-gray-600">Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium">{data.currency} {subtotal.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between py-4">
-            <span className="font-medium">Total</span>
-            <span className="font-medium text-primary">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          <div className="flex justify-between py-2 border-b border-gray-200">
+            <span className="text-gray-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="font-medium">{data.currency} {tax.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 text-lg font-bold text-blue-600">
+            <span>Total</span>
+            <span>{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -159,8 +195,10 @@ export const ModernTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const CreativeTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
-    <div className="bg-gradient-to-br from-[#FF6B6B] to-[#4ECDC4] p-1 rounded-lg">
+    <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl">
       <div className="bg-white p-8 rounded-lg">
         <div className="flex justify-between items-center mb-12">
           <div>
@@ -219,11 +257,15 @@ export const CreativeTemplate = ({ data }: InvoiceTemplateProps) => {
           <div className="w-1/3">
             <div className="flex justify-between py-4">
               <span className="text-gray-600">Subtotal</span>
-              <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+              <span>{data.currency} {subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between py-4">
+              <span className="text-gray-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+              <span>{data.currency} {tax.toFixed(2)}</span>
             </div>
             <div className="flex justify-between py-4 border-t-2 border-dashed border-gray-200">
               <span className="font-bold">Total</span>
-              <span className="font-bold text-[#4ECDC4]">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+              <span className="font-bold text-[#4ECDC4]">{data.currency} {total.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -240,8 +282,10 @@ export const CreativeTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const CorporateTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
-    <div className="bg-[#1E293B] p-8 rounded-lg text-white">
+    <div className="bg-slate-50 p-8 rounded-xl">
       <div className="flex justify-between items-center mb-12">
         <div>
           <h1 className="text-4xl font-light">INVOICE</h1>
@@ -298,14 +342,18 @@ export const CorporateTemplate = ({ data }: InvoiceTemplateProps) => {
       </div>
 
       <div className="flex justify-end mb-12">
-        <div className="w-1/3 bg-[#334155] p-6 rounded-lg">
-          <div className="flex justify-between py-4">
-            <span className="text-gray-400">Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+        <div className="w-1/3 bg-[#334155] p-6 rounded-lg shadow-sm border border-slate-200">
+          <div className="flex justify-between py-2">
+            <span className="text-gray-600">Subtotal</span>
+            <span className="font-medium">{data.currency} {subtotal.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between py-4 border-t border-gray-600">
-            <span className="font-medium">Total</span>
-            <span className="font-medium">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+          <div className="flex justify-between py-2 border-b border-gray-200">
+            <span className="text-gray-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="font-medium">{data.currency} {tax.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 text-lg font-bold text-slate-800">
+            <span>Total</span>
+            <span>{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -321,6 +369,8 @@ export const CorporateTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const MinimalistTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-white p-12 rounded-lg shadow-lg max-w-4xl mx-auto">
       <div className="border-t-2 border-black pt-8 mb-12">
@@ -374,11 +424,15 @@ export const MinimalistTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3">
           <div className="flex justify-between py-4">
             <span className="text-sm text-gray-600">Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span>{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-4">
+            <span className="text-sm text-gray-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span>{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-4 border-t border-black">
             <span className="font-medium">Total</span>
-            <span className="font-medium">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -394,6 +448,8 @@ export const MinimalistTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const ElegantTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-white p-12 rounded-lg shadow-lg border-2 border-[#DAA520]">
       <div className="bg-[#1A1A1A] -mx-12 -mt-12 p-12 mb-12">
@@ -449,11 +505,15 @@ export const ElegantTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 bg-[#1A1A1A] p-6">
           <div className="flex justify-between py-4 text-white">
             <span>Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span>{data.currency} {subtotal.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between py-4 border-t border-[#DAA520]">
+          <div className="flex justify-between py-4 text-white border-b border-[#DAA520]/20">
+            <span>Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span>{data.currency} {tax.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-4">
             <span className="text-[#DAA520] text-lg">TOTAL</span>
-            <span className="text-[#DAA520] text-lg">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-[#DAA520] text-lg">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -469,8 +529,10 @@ export const ElegantTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const PremiumTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
-    <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-lg text-white">
+    <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-lg">
       <div className="border-b border-slate-700 pb-8 mb-8">
         <div className="flex justify-between items-start">
           <div>
@@ -534,11 +596,15 @@ export const PremiumTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 space-y-3">
           <div className="flex justify-between py-2 text-slate-400">
             <span>Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span>{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2 text-slate-400">
+            <span>Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span>{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-slate-700">
             <span className="font-medium">Total</span>
-            <span className="font-medium text-blue-400">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-blue-400">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -554,6 +620,8 @@ export const PremiumTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const MinimalistProTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-white p-8 rounded-lg">
       <div className="flex justify-between items-start mb-12">
@@ -617,11 +685,15 @@ export const MinimalistProTemplate = ({ data }: InvoiceTemplateProps) => {
           <div className="space-y-3 border-t border-gray-100 pt-3">
             <div className="flex justify-between">
               <span className="text-gray-500">Subtotal</span>
-              <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+              <span>{data.currency} {subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+              <span>{data.currency} {tax.toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-medium">
               <span>Total</span>
-              <span className="text-blue-500">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+              <span className="text-blue-500">{data.currency} {total.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -638,6 +710,8 @@ export const MinimalistProTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const BusinessProTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-white p-8 rounded-lg">
       <div className="flex justify-between items-start mb-12 border-b border-gray-200 pb-8">
@@ -708,11 +782,15 @@ export const BusinessProTemplate = ({ data }: InvoiceTemplateProps) => {
           <div className="space-y-4">
             <div className="flex justify-between py-3 border-b border-gray-100">
               <span className="text-gray-600">Subtotal</span>
-              <span className="font-medium">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+              <span className="font-medium">{data.currency} {subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between py-3 border-b border-gray-100">
+              <span className="text-gray-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+              <span className="font-medium">{data.currency} {tax.toFixed(2)}</span>
             </div>
             <div className="flex justify-between py-3">
               <span className="font-semibold text-gray-900">Total Amount</span>
-              <span className="font-bold text-indigo-600">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+              <span className="font-bold text-indigo-600">{data.currency} {total.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -736,6 +814,8 @@ export const BusinessProTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const BoutiqueTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-white p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -791,11 +871,15 @@ export const BoutiqueTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3">
           <div className="flex justify-between py-2">
             <span className="text-pink-700">Subtotal</span>
-            <span className="text-pink-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-pink-900">{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-pink-700">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="text-pink-900">{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-pink-200">
             <span className="font-semibold text-pink-900">Total</span>
-            <span className="font-semibold text-pink-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-semibold text-pink-900">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -811,6 +895,8 @@ export const BoutiqueTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const TechTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-slate-900 text-white p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -866,11 +952,15 @@ export const TechTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3">
           <div className="flex justify-between py-2">
             <span className="text-slate-400">Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span>{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-slate-400">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span>{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-slate-700">
             <span className="font-medium text-cyan-400">Total</span>
-            <span className="font-medium text-cyan-400">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-cyan-400">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -886,6 +976,8 @@ export const TechTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const NatureTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-green-50 p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -941,11 +1033,15 @@ export const NatureTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 bg-white border-2 border-green-200 rounded-xl p-4">
           <div className="flex justify-between py-2">
             <span className="text-green-600">Subtotal</span>
-            <span className="text-green-800">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-green-800">{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-green-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="text-green-800">{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-green-100">
             <span className="font-medium text-green-800">Total</span>
-            <span className="font-medium text-green-800">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-green-800">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -961,6 +1057,8 @@ export const NatureTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const VintageTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-amber-50 p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -1016,11 +1114,15 @@ export const VintageTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 border-2 border-amber-200 p-4 rounded">
           <div className="flex justify-between py-2">
             <span className="text-amber-700 font-serif">Subtotal</span>
-            <span className="text-amber-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-amber-900">{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-amber-700 font-serif">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="text-amber-900">{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-amber-200">
             <span className="font-medium text-amber-900 font-serif">Total</span>
-            <span className="font-medium text-amber-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-amber-900">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -1036,6 +1138,8 @@ export const VintageTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const ArtisticTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-purple-50 p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -1091,11 +1195,15 @@ export const ArtisticTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 bg-white p-4 rounded-lg shadow-lg">
           <div className="flex justify-between py-2">
             <span className="text-purple-600">Subtotal</span>
-            <span className="text-purple-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-purple-900">{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-purple-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="text-purple-900">{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-purple-100">
             <span className="font-medium text-purple-900">Total</span>
-            <span className="font-medium text-purple-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-purple-900">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -1111,6 +1219,8 @@ export const ArtisticTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const LuxuryTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -1166,11 +1276,15 @@ export const LuxuryTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 bg-gray-800 border border-yellow-500/20 p-4 rounded-lg">
           <div className="flex justify-between py-2">
             <span className="text-gray-400">Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span>{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-gray-400">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span>{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-yellow-500/20">
             <span className="font-medium text-yellow-500">Total</span>
-            <span className="font-medium text-yellow-500">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-yellow-500">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -1186,6 +1300,8 @@ export const LuxuryTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const GradientTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -1241,11 +1357,15 @@ export const GradientTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 bg-white/10 backdrop-blur-sm p-4 rounded-lg">
           <div className="flex justify-between py-2">
             <span className="text-blue-100">Subtotal</span>
-            <span>{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span>{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-blue-100">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span>{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-white/20">
             <span className="font-medium">Total</span>
-            <span className="font-medium">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -1261,6 +1381,8 @@ export const GradientTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const CleanTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-white p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -1316,11 +1438,15 @@ export const CleanTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3">
           <div className="flex justify-between py-2">
             <span className="text-gray-500">Subtotal</span>
-            <span className="text-gray-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-gray-900">{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-gray-500">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="text-gray-900">{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-gray-200">
             <span className="font-medium text-gray-900">Total</span>
-            <span className="font-medium text-gray-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-gray-900">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -1336,6 +1462,8 @@ export const CleanTemplate = ({ data }: InvoiceTemplateProps) => {
 };
 
 export const ProfessionalTemplate = ({ data }: InvoiceTemplateProps) => {
+  const { subtotal, tax, total } = calculateInvoiceTotals(data);
+  
   return (
     <div className="bg-slate-50 p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
@@ -1391,11 +1519,15 @@ export const ProfessionalTemplate = ({ data }: InvoiceTemplateProps) => {
         <div className="w-1/3 bg-white p-4 rounded-lg shadow-sm">
           <div className="flex justify-between py-2">
             <span className="text-slate-600">Subtotal</span>
-            <span className="text-slate-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="text-slate-900">{data.currency} {subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="text-slate-600">Tax ({(data.taxRate || 0).toFixed(1)}%)</span>
+            <span className="text-slate-900">{data.currency} {tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between py-2 border-t border-slate-200">
             <span className="font-medium text-slate-900">Total</span>
-            <span className="font-medium text-slate-900">{data.currency} {data.items.reduce((sum, item) => sum + (item.quantity * item.price), 0).toFixed(2)}</span>
+            <span className="font-medium text-slate-900">{data.currency} {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
