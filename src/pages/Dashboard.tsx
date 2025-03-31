@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ClientService } from "@/services/ClientService";
 import { InvoiceService } from "@/services/InvoiceService";
+import { toast } from "sonner";
 
 export default function Dashboard() {
   const [clientCount, setClientCount] = useState(0);
@@ -41,6 +42,29 @@ export default function Dashboard() {
     setTotalOutstanding(outstanding);
     setTotalPaid(paid);
   }, []);
+
+  const handleMarkAsPaid = (invoiceId: string) => {
+    try {
+      const updatedInvoice = InvoiceService.update(invoiceId, { status: 'paid' });
+      if (updatedInvoice) {
+        // Update the recentInvoices state
+        setRecentInvoices(prevInvoices => 
+          prevInvoices.map(invoice => 
+            invoice.id === invoiceId ? { ...invoice, status: 'paid' } : invoice
+          )
+        );
+
+        // Update the total amounts
+        const total = updatedInvoice.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+        setTotalOutstanding(prev => prev - total);
+        setTotalPaid(prev => prev + total);
+
+        toast.success("Invoice marked as paid successfully!");
+      }
+    } catch (error) {
+      toast.error("Failed to mark invoice as paid. Please try again.");
+    }
+  };
 
   const stats = [
     {
@@ -144,30 +168,43 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               <div className="rounded-md border overflow-hidden">
-                <div className="grid grid-cols-5 bg-muted/50 p-4 text-sm font-medium">
-                  <div>Invoice</div>
-                  <div>Client</div>
-                  <div>Date</div>
-                  <div className="text-right">Amount</div>
-                  <div className="text-right">Status</div>
+                <div className="grid grid-cols-6 bg-muted/50 p-4 text-sm font-medium">
+                  <div className="col-span-1">Invoice</div>
+                  <div className="col-span-1">Client</div>
+                  <div className="col-span-1">Date</div>
+                  <div className="text-right col-span-1">Amount</div>
+                  <div className="text-center col-span-1">Status</div>
+                  <div className="text-right col-span-1">Actions</div>
                 </div>
                 <div className="divide-y">
                   {recentInvoices.length > 0 ? (
                     recentInvoices.map((invoice) => {
                       const total = invoice.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
                       return (
-                        <div key={invoice.id} className="grid grid-cols-5 p-4 text-sm items-center">
-                          <div className="font-medium truncate">{invoice.invoiceNumber}</div>
-                          <div className="truncate">{invoice.client.name}</div>
-                          <div className="truncate">{new Date(invoice.issueDate).toLocaleDateString()}</div>
-                          <div className="text-right">{invoice.currency} {total.toFixed(2)}</div>
-                          <div className="text-right">
+                        <div key={invoice.id} className="grid grid-cols-6 p-4 text-sm items-center">
+                          <div className="col-span-1 font-medium truncate">{invoice.invoiceNumber}</div>
+                          <div className="col-span-1 truncate">{invoice.client.name}</div>
+                          <div className="col-span-1 truncate">{new Date(invoice.issueDate).toLocaleDateString()}</div>
+                          <div className="col-span-1 text-right">{invoice.currency} {total.toFixed(2)}</div>
+                          <div className="col-span-1 flex justify-center">
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                              ${invoice.status === 'paid' ? 'bg-green-100 text-green-700' : 
-                                invoice.status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 
-                                'bg-red-100 text-red-700'}`}>
+                              ${invoice.status === 'paid' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 
+                                invoice.status === 'pending' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' : 
+                                'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'}`}>
                               {invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
                             </span>
+                          </div>
+                          <div className="col-span-1 flex justify-end">
+                            {invoice.status !== 'paid' && (
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => handleMarkAsPaid(invoice.id)}
+                                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:hover:bg-green-900/20 h-8 w-8"
+                              >
+                                <Check className="h-4 w-4" />
+                              </Button>
+                            )}
                           </div>
                         </div>
                       );

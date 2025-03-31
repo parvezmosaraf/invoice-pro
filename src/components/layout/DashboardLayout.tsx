@@ -132,8 +132,49 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
 
       {/* Main Content */}
       <main className="lg:pl-72">
-        <div className="min-h-screen p-4 pt-4 lg:p-8">
-          {children}
+        <div className="min-h-screen p-4 pt-4 lg:p-8 flex flex-col">
+          <div className="flex-1">
+            {children}
+          </div>
+          
+          {/* Footer */}
+          <footer className="mt-auto py-12 px-4 border-t">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="flex items-center space-x-2 mb-4 md:mb-0">
+                  <FileText className="h-6 w-6 text-primary" />
+                  <span className="text-xl font-bold">InvoicesXpert</span>
+                </div>
+                
+                <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+                  <Link to="/terms" className="hover:text-foreground transition-colors">
+                    Terms
+                  </Link>
+                  <Link to="/privacy" className="hover:text-foreground transition-colors">
+                    Privacy
+                  </Link>
+                  <Link to="/contact" className="hover:text-foreground transition-colors">
+                    Contact
+                  </Link>
+                  <a href="https://developersworld.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                    @developersworld
+                  </a>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+                © {new Date().getFullYear()} InvoicesXpert. All rights reserved. Developed by{' '}
+                <a 
+                  href="https://developersworld.io" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Developers World LLC
+                </a>
+              </div>
+            </div>
+          </footer>
         </div>
       </main>
     </div>
