@@ -5,6 +5,7 @@ import { FileText, CheckCircle, ChevronRight, LogOut, Sparkles, Star, Zap, Crown
 import { motion, AnimatePresence } from "framer-motion";
 import UserService from "@/services/UserService";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const features = [
   "Create professional invoices in seconds",
@@ -201,6 +202,7 @@ const Index = () => {
             </Link>
             
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               {userEmail ? (
                 <>
                   <Link to="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">
@@ -382,23 +384,31 @@ const Index = () => {
               </div>
               
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-                <Link to="#" className="hover:text-foreground transition-colors">
+                <Link to="/terms" className="hover:text-foreground transition-colors">
                   Terms
                 </Link>
-                <Link to="#" className="hover:text-foreground transition-colors">
+                <Link to="/privacy" className="hover:text-foreground transition-colors">
                   Privacy
                 </Link>
-                <Link to="#" className="hover:text-foreground transition-colors">
+                <Link to="/contact" className="hover:text-foreground transition-colors">
                   Contact
                 </Link>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  @proinvoice
+                <a href="https://developersworld.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                  @developersworld
                 </a>
               </div>
             </div>
             
             <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} ProInvoice. All rights reserved.
+              © {new Date().getFullYear()} ProInvoice. All rights reserved. Developed by{' '}
+              <a 
+                href="https://developersworld.io" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Developers World LLC
+              </a>
             </div>
           </div>
         </footer>
