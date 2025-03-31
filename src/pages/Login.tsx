@@ -32,7 +32,7 @@ export default function Login() {
 
   function onSubmit(data: LoginValues) {
     // Get stored user data
-    const storedData = localStorage.getItem('proinvoice_user_data');
+    const storedData = localStorage.getItem('invoicesxpert_user_data');
     if (storedData) {
       const userData = JSON.parse(storedData);
       if (userData.email === data.email) {
@@ -77,7 +77,7 @@ export default function Login() {
                   <div className="bg-primary/10 p-2 rounded-lg">
                     <FileText className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-bold">ProInvoice</span>
+                  <span className="text-xl font-bold">InvoicesXpert</span>
                 </Link>
                 
                 <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">

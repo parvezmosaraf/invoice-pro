@@ -17,14 +17,14 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
               <p>
-                By accessing and using ProInvoice, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.
+                By accessing and using InvoicesXpert, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">2. Use License</h2>
               <p>
-                Permission is granted to temporarily access ProInvoice for personal, non-commercial use only. This license does not include:
+                Permission is granted to temporarily access InvoicesXpert for personal, non-commercial use only. This license does not include:
               </p>
               <ul className="list-disc pl-6 mt-2">
                 <li>Modifying or copying the materials</li>
@@ -38,7 +38,7 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">3. User Responsibilities</h2>
               <p>
-                As a user of ProInvoice, you are responsible for:
+                As a user of InvoicesXpert, you are responsible for:
               </p>
               <ul className="list-disc pl-6 mt-2">
                 <li>Maintaining the confidentiality of your account</li>
@@ -58,7 +58,7 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">5. Limitation of Liability</h2>
               <p>
-                ProInvoice shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.
+                InvoicesXpert shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.
               </p>
             </section>
           </div>

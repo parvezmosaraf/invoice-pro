@@ -431,10 +431,6 @@ export default function Invoice() {
               <TabsTrigger value="all">All Invoices</TabsTrigger>
               <TabsTrigger value="create">Create Invoice</TabsTrigger>
             </TabsList>
-            <Button onClick={handleNewInvoice}>
-              <Plus className="w-4 h-4 mr-2" />
-              New Invoice
-            </Button>
           </div>
 
           <TabsContent value="create">

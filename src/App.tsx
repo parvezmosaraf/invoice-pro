@@ -43,7 +43,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 const queryClient = new QueryClient();
 
 const App = () => (
-  <ThemeProvider defaultTheme="system" storageKey="proinvoice-theme">
+  <ThemeProvider defaultTheme="system" storageKey="invoicesxpert-theme">
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />

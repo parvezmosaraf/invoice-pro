@@ -208,16 +208,6 @@ export default function Templates() {
               Choose from our selection of professionally designed invoice templates
             </p>
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" className="bg-background" onClick={handlePreviewAll}>
-              <Eye className="h-4 w-4 mr-2" />
-              Preview All
-            </Button>
-            <Button className="bg-primary hover:bg-primary/90 transition-colors">
-              <Download className="h-4 w-4 mr-2" />
-              Download
-            </Button>
-          </div>
         </div>
         
         <motion.div 

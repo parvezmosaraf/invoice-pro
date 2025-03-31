@@ -11,7 +11,7 @@ interface User {
   taxId?: string;
 }
 
-const STORAGE_KEY = 'proinvoice_user';
+const STORAGE_KEY = 'invoicesxpert_user';
 
 export const UserService = {
   getCurrentUser: (): User | null => {

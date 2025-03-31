@@ -17,7 +17,7 @@ const Privacy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">1. Information We Collect</h2>
               <p>
-                We collect information that you provide directly to us when using ProInvoice, including:
+                We collect information that you provide directly to us when using InvoicesXpert, including:
               </p>
               <ul className="list-disc pl-6 mt-2">
                 <li>Account information (name, email, password)</li>

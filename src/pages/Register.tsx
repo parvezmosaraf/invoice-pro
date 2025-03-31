@@ -58,7 +58,7 @@ export default function Register() {
       email: data.email,
     };
     
-    localStorage.setItem('proinvoice_user_data', JSON.stringify(userData));
+    localStorage.setItem('invoicesxpert_user_data', JSON.stringify(userData));
     UserService.setUser(userData);
     
     toast({
@@ -95,14 +95,14 @@ export default function Register() {
                     <div className="bg-primary/10 p-2 rounded-lg">
                       <FileText className="h-6 w-6 text-primary" />
                     </div>
-                    <span className="text-xl font-bold">ProInvoice</span>
+                    <span className="text-xl font-bold">InvoicesXpert</span>
                   </Link>
                   
                   <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
                     Create your account
                   </h1>
                   <p className="text-muted-foreground mb-8">
-                    Get started with ProInvoice today
+                    Get started with InvoicesXpert today
                   </p>
                   
                   <Form {...form}>
@@ -199,7 +199,7 @@ export default function Register() {
                         Everything you need to manage your invoices
                       </h2>
                       <p className="text-muted-foreground">
-                        Join thousands of businesses who trust ProInvoice
+                        Join thousands of businesses who trust InvoicesXpert
                       </p>
                     </div>
 
@@ -227,7 +227,7 @@ export default function Register() {
                         </div>
                         <div>
                           <p className="font-medium">
-                            "ProInvoice has streamlined my entire billing process."
+                            "InvoicesXpert has streamlined my entire billing process."
                           </p>
                           <p className="text-sm text-muted-foreground mt-1">
                             Jane Doe, Freelance Designer

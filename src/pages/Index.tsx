@@ -198,7 +198,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
               <FileText className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">ProInvoice</span>
+              <span className="text-xl font-bold">InvoicesXpert</span>
             </Link>
             
             <div className="flex items-center space-x-4">
@@ -314,7 +314,7 @@ const Index = () => {
               <div className="relative rounded-xl shadow-2xl overflow-hidden border bg-white">
                 <img 
                   src="/banner.svg" 
-                  alt="ProInvoice Banner" 
+                  alt="InvoicesXpert Banner" 
                   className="w-full h-auto"
                 />
                 {/* Gradient overlay */}
@@ -366,7 +366,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to streamline your invoicing?</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Join thousands of freelancers and small businesses who trust ProInvoice for their billing needs.
+              Join thousands of freelancers and small businesses who trust InvoicesXpert for their billing needs.
             </p>
             <Link to="/register">
               <Button size="lg">Get Started Now</Button>
@@ -380,7 +380,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="flex items-center space-x-2 mb-4 md:mb-0">
                 <FileText className="h-6 w-6 text-primary" />
-                <span className="text-xl font-bold">ProInvoice</span>
+                <span className="text-xl font-bold">InvoicesXpert</span>
               </div>
               
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
@@ -400,7 +400,7 @@ const Index = () => {
             </div>
             
             <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} ProInvoice. All rights reserved. Developed by{' '}
+              © {new Date().getFullYear()} InvoicesXpert. All rights reserved. Developed by{' '}
               <a 
                 href="https://developersworld.io" 
                 target="_blank" 

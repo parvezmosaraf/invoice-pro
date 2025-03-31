@@ -63,7 +63,7 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
           <div className="border-b px-6 py-4">
             <Link to="/" className="flex items-center gap-2">
               <FileText className="h-6 w-6 text-primary" />
-              <span className="text-xl font-semibold">ProInvoice</span>
+              <span className="text-xl font-semibold">InvoicesXpert</span>
             </Link>
           </div>
           <nav className="flex-1 space-y-1 p-4">
@@ -101,7 +101,7 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
                 <div className="border-b px-6 py-4">
                   <Link to="/" className="flex items-center gap-2">
                     <FileText className="h-6 w-6 text-primary" />
-                    <span className="text-xl font-semibold">ProInvoice</span>
+                    <span className="text-xl font-semibold">InvoicesXpert</span>
                   </Link>
                 </div>
                 <nav className="flex-1 space-y-1 p-4">

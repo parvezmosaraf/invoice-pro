@@ -4,7 +4,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { supabase } from '../lib/supabase'
 
-const STORAGE_KEY = 'proinvoice_invoices';
+const STORAGE_KEY = 'invoicesxpert_invoices';
 
 export const InvoiceService = {
   getAll: (): Invoice[] => {
